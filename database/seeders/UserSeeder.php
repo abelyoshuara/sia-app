@@ -19,6 +19,8 @@ class UserSeeder extends Seeder
             'email' => 'abelyoshuara@gmail.com',
             'email_verified_at' => now(),
             'password' => Hash::make('12341234'),
+            'created_at' => now(),
+            'updated_at' => now(),
         ]);
     }
 }
