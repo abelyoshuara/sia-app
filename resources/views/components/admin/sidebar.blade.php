@@ -84,19 +84,19 @@
             <li>
               <a class="flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-neutral-700 rounded-lg hover:bg-gray-100 dark:hover:bg-neutral-700 dark:bg-neutral-800 dark:text-neutral-400 dark:hover:text-neutral-300"
                 href="{{ route('dashboard') }}">
-                Kode Akun 1
+                Akun 1
               </a>
             </li>
             <li>
               <a class="flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-neutral-700 rounded-lg hover:bg-gray-100 dark:hover:bg-neutral-700 dark:bg-neutral-800 dark:text-neutral-400 dark:hover:text-neutral-300"
                 href="{{ route('dashboard') }}">
-                Kode Akun 2
+                Akun 2
               </a>
             </li>
             <li>
               <a class="flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-neutral-700 rounded-lg hover:bg-gray-100 dark:hover:bg-neutral-700 dark:bg-neutral-800 dark:text-neutral-400 dark:hover:text-neutral-300"
                 href="{{ route('dashboard') }}">
-                Kode Akun 3
+                Akun 3
               </a>
             </li>
           </ul>
@@ -204,19 +204,13 @@
             <li>
               <a class="flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-neutral-700 rounded-lg hover:bg-gray-100 dark:hover:bg-neutral-700 dark:bg-neutral-800 dark:text-neutral-400 dark:hover:text-neutral-300"
                 href="{{ route('dashboard') }}">
-                Link 1
+                Transaksi Jurnal
               </a>
             </li>
             <li>
               <a class="flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-neutral-700 rounded-lg hover:bg-gray-100 dark:hover:bg-neutral-700 dark:bg-neutral-800 dark:text-neutral-400 dark:hover:text-neutral-300"
                 href="{{ route('dashboard') }}">
-                Link 2
-              </a>
-            </li>
-            <li>
-              <a class="flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-neutral-700 rounded-lg hover:bg-gray-100 dark:hover:bg-neutral-700 dark:bg-neutral-800 dark:text-neutral-400 dark:hover:text-neutral-300"
-                href="{{ route('dashboard') }}">
-                Link 3
+                Transaksi Penyesuaian
               </a>
             </li>
           </ul>
@@ -256,19 +250,25 @@
             <li>
               <a class="flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-neutral-700 rounded-lg hover:bg-gray-100 dark:hover:bg-neutral-700 dark:bg-neutral-800 dark:text-neutral-400 dark:hover:text-neutral-300"
                 href="{{ route('dashboard') }}">
-                Link 1
+                Laba Rugi
               </a>
             </li>
             <li>
               <a class="flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-neutral-700 rounded-lg hover:bg-gray-100 dark:hover:bg-neutral-700 dark:bg-neutral-800 dark:text-neutral-400 dark:hover:text-neutral-300"
                 href="{{ route('dashboard') }}">
-                Link 2
+                Perubahan Modal
               </a>
             </li>
             <li>
               <a class="flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-neutral-700 rounded-lg hover:bg-gray-100 dark:hover:bg-neutral-700 dark:bg-neutral-800 dark:text-neutral-400 dark:hover:text-neutral-300"
                 href="{{ route('dashboard') }}">
-                Link 3
+                Naraca
+              </a>
+            </li>
+            <li>
+              <a class="flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-neutral-700 rounded-lg hover:bg-gray-100 dark:hover:bg-neutral-700 dark:bg-neutral-800 dark:text-neutral-400 dark:hover:text-neutral-300"
+                href="{{ route('dashboard') }}">
+                Arus Kas
               </a>
             </li>
           </ul>
