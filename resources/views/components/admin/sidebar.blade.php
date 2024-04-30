@@ -33,8 +33,7 @@
   <nav class="hs-accordion-group p-6 w-full flex flex-col flex-wrap" data-hs-accordion-always-open>
     <ul class="space-y-1.5">
       <li>
-        <a class="flex items-center gap-x-3.5 py-2 px-2.5 bg-gray-100 text-sm text-neutral-700 rounded-lg hover:bg-gray-100 hover:dark:bg-neutral-700 dark:bg-neutral-700 dark:text-white"
-          href="{{ route('dashboard') }}">
+        <x-admin.sidebar.link href="{{ route('dashboard') }}">
           <svg class="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
             viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
             stroke-linejoin="round">
@@ -42,7 +41,7 @@
             <polyline points="9 22 9 12 15 12 15 22" />
           </svg>
           Dashboard
-        </a>
+        </x-admin.sidebar.link>
       </li>
 
       <li class="hs-accordion" id="projects-accordion">
@@ -104,8 +103,7 @@
       </li>
 
       <li>
-        <a class="w-full flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-neutral-700 rounded-lg hover:bg-gray-100 dark:hover:bg-neutral-700 dark:text-neutral-400 dark:hover:text-neutral-300"
-          href="{{ route('dashboard') }}">
+        <x-admin.sidebar.link href="/jurnal-umum">
           <svg class="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
             viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
             stroke-linejoin="round">
@@ -121,12 +119,11 @@
             <path d="M16 18h.01" />
           </svg>
           Jurnal Umum
-        </a>
+        </x-admin.sidebar.link>
       </li>
 
       <li>
-        <a class="w-full flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-neutral-700 rounded-lg hover:bg-gray-100 dark:hover:bg-neutral-900 dark:text-neutral-400 dark:hover:text-neutral-300"
-          href="{{ route('dashboard') }}">
+        <x-admin.sidebar.link href="/posting">
           <svg class="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
             viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
             stroke-linejoin="round">
@@ -134,12 +131,11 @@
             <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
           </svg>
           Posting
-        </a>
+        </x-admin.sidebar.link>
       </li>
 
       <li>
-        <a class="w-full flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-neutral-700 rounded-lg hover:bg-gray-100 dark:hover:bg-neutral-900 dark:text-neutral-400 dark:hover:text-neutral-300"
-          href="{{ route('dashboard') }}">
+        <x-admin.sidebar.link href="/naraca-saldo">
           <svg class="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
             viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
             stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-book-upload">
@@ -150,12 +146,11 @@
             <path d="M18 13v9" />
           </svg>
           Naraca Saldo
-        </a>
+        </x-admin.sidebar.link>
       </li>
 
       <li>
-        <a class="w-full flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-neutral-700 rounded-lg hover:bg-gray-100 dark:hover:bg-neutral-900 dark:text-neutral-400 dark:hover:text-neutral-300"
-          href="{{ route('dashboard') }}">
+        <x-admin.sidebar.link href="/naraca-lajur">
           <svg class="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
             viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
             stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-book-download">
@@ -166,7 +161,7 @@
             <path d="M18 22v-9" />
           </svg>
           Naraca Lajur
-        </a>
+        </x-admin.sidebar.link>
       </li>
 
       <li class="hs-accordion" id="account-accordion">
