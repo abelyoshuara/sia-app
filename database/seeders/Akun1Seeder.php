@@ -17,22 +17,32 @@ class Akun1Seeder extends Seeder
             [
                 'kode' => '1',
                 'nama' => 'Aktiva',
+                'created_at' => now(),
+                'updated_at' => now(),
             ],
             [
                 'kode' => '2',
                 'nama' => 'Kewajiban',
+                'created_at' => now(),
+                'updated_at' => now(),
             ],
             [
                 'kode' => '3',
                 'nama' => 'Modal',
+                'created_at' => now(),
+                'updated_at' => now(),
             ],
             [
                 'kode' => '4',
                 'nama' => 'Pendapatan',
+                'created_at' => now(),
+                'updated_at' => now(),
             ],
             [
                 'kode' => '5',
                 'nama' => 'Beban',
+                'created_at' => now(),
+                'updated_at' => now(),
             ],
         ]);
     }
