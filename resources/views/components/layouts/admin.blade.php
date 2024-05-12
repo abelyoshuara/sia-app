@@ -36,6 +36,15 @@
   <!-- Content -->
   <div class="w-full lg:ps-64">
     <div class="p-4 sm:p-6 space-y-4 sm:space-y-6">
+
+      @if (session('success'))
+        <x-admin.alert type="success" :message="session('success')" />
+      @elseif (session('error'))
+        <x-admin.alert type="error" :message="session('error')" />
+      @elseif (session('info'))
+        <x-admin.alert type="info" :message="session('info')" />
+      @endif
+
       {{ $slot }}
     </div>
   </div>
