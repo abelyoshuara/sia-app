@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreAkun1Request;
 use App\Models\Akun1;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -21,17 +22,19 @@ class Akun1Controller extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(): View
     {
-        //
+        return view('akun1.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreAkun1Request $request)
     {
-        //
+        Akun1::create($request->validated());
+
+        return to_route('akun1.index')->with('success', 'Akun 1 created successfully.');
     }
 
     /**
