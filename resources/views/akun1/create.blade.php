@@ -1,30 +1,20 @@
 <x-layouts.admin title="Akun 1">
-  <!-- Card -->
   <div class="flex flex-col">
     <div class="-m-1.5 overflow-x-auto">
-      <div class="p-1.5 min-w-full inline-block align-middle">
-        <div
-          class="bg-white border border-gray-200 rounded-xl shadow-sm overflow-hidden dark:bg-neutral-800 dark:border-neutral-700">
-          <!-- Header -->
-          <div
-            class="px-6 py-4 grid gap-3 md:flex md:justify-between md:items-center border-b border-gray-200 dark:border-neutral-700">
-            <div>
-              <h2 class="text-xl font-semibold text-gray-800 dark:text-neutral-200">
-                Kode Akun
-              </h2>
-              <p class="text-sm text-gray-600 dark:text-neutral-400">
-                Buat Akun 1
-              </p>
-            </div>
-          </div>
-          <!-- End Header -->
+      <div class="p-1.5 min-w-full inline-block align-middle space-y-5">
 
-          <!-- Form -->
-          <div class="px-6 py-4 w-full lg:w-1/2">
+        <!-- Card -->
+        <x-admin.card>
+          <x-admin.card.header>
+            <x-slot:title>Akun 1</x-slot>
+            <x-slot:subtitle>Buat Akun 1</x-slot>
+          </x-admin.card.header>
+
+          <x-admin.card.content>
             <form action="{{ route('akun1.store') }}" method="POST">
               @csrf
 
-              <div class="space-y-4">
+              <div class="space-y-3">
                 <div class="space-y-2">
                   <x-admin.forms.input-label for="kode"
                     class="inline-block text-sm font-medium text-gray-800 dark:text-neutral-200" :value="__('Kode')" />
@@ -41,20 +31,18 @@
                   <x-admin.forms.input-error :message="$errors->first('nama')" />
                 </div>
 
-                <div class="flex justify-end gap-x-2">
-                  <a href="{{ route('akun1.index') }}"
-                    class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:text-white dark:hover:bg-neutral-800">
-                    Cancel
-                  </a>
-                  <x-admin.forms.button type="submit">Save</x-admin.forms.button>
+                <div class="flex justify-end gap-x-2 pt-4">
+                  <x-admin.button as="a" href="{{ route('akun1.index') }}" variant="white"
+                    color="gray">Cancel</x-admin.button>
+                  <x-admin.button type="submit">Save</x-admin.button>
                 </div>
               </div>
             </form>
-          </div>
-          <!-- End Form -->
-        </div>
+          </x-admin.card.content>
+        </x-admin.card>
+        <!-- End Card -->
+
       </div>
     </div>
   </div>
-  <!-- End Card -->
 </x-layouts.admin>
