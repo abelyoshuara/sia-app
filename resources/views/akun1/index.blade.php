@@ -62,7 +62,7 @@
               <div class="inline-flex">
                 <div class="px-2 py-1.5">
                   <a class="inline-flex items-center gap-x-1 text-sm text-blue-600 decoration-2 hover:underline font-medium dark:text-blue-500"
-                    href="#">
+                    href="{{ route('akun1.edit', $akun1->id) }}">
                     Edit
                   </a>
                 </div>
