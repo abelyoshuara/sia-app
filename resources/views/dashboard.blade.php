@@ -70,21 +70,10 @@
       <x-slot:title>Users</x-slot>
       <x-slot:subtitle>Add users, edit and more.</x-slot>
       <x-slot:actions>
-        <a class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:text-white dark:hover:bg-neutral-800"
-          href="#">
-          View all
-        </a>
-
-        <a class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none"
-          href="#">
-          <svg class="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-            stroke-linejoin="round">
-            <path d="M5 12h14" />
-            <path d="M12 5v14" />
-          </svg>
-          Add user
-        </a>
+        <x-admin.button as="a" href="{{ route('akun1.index') }}" size="sm" variant="white"
+          color="dark">View
+          all</x-admin.button>
+        <x-admin.button as="a" href="{{ route('akun1.create') }}" size="sm">Add user</x-admin.button>
       </x-slot>
     </x-admin.card.header>
 
@@ -219,13 +208,8 @@
     </x-admin.table>
 
     <x-admin.card.footer>
-      <div>
-        <p class="text-sm text-gray-600 dark:text-neutral-400">
-          <span class="font-semibold text-gray-800 dark:text-neutral-200">12</span> results
-        </p>
-      </div>
-
-      <div>
+      <x-slot:total>10</x-slot>
+      <x-slot:pagination>
         <div class="inline-flex gap-x-2">
           <button type="button"
             class="py-1.5 px-2 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:text-white dark:hover:bg-neutral-800">
@@ -247,7 +231,7 @@
             </svg>
           </button>
         </div>
-      </div>
+      </x-slot>
     </x-admin.card.footer>
   </x-admin.card>
 </x-layouts.admin>
