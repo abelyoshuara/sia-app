@@ -35,57 +35,57 @@
           <!-- End Header -->
 
           <!-- Table -->
-          <table class="min-w-full divide-y divide-gray-200 dark:divide-neutral-700">
-            <thead class="bg-gray-50 dark:bg-neutral-800">
+          <x-admin.table>
+            <x-admin.table.thead>
               <tr>
-                <th scope="col" class="ps-6 py-3 text-start">
+                <x-admin.table.th class="ps-6 text-start">
                   <div class="flex items-center gap-x-2">
                     <span class="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-neutral-200">
                       Kode
                     </span>
                   </div>
-                </th>
+                </x-admin.table.th>
 
-                <th scope="col" class="px-6 py-3 text-start">
+                <x-admin.table.th class="px-6 text-start">
                   <div class="flex items-center gap-x-2">
                     <span class="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-neutral-200">
                       Nama
                     </span>
                   </div>
-                </th>
+                </x-admin.table.th>
 
-                <th scope="col" class="px-6 py-3 text-start">
+                <x-admin.table.th class="px-6 text-start">
                   <div class="flex items-center gap-x-2">
                     <span class="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-neutral-200">
                       Created
                     </span>
                   </div>
-                </th>
+                </x-admin.table.th>
 
-                <th scope="col" class="px-6 py-3 text-end"></th>
+                <x-admin.table.th class="px-6 text-end"></x-admin.table.th>
               </tr>
-            </thead>
+            </x-admin.table.thead>
 
-            <tbody class="divide-y divide-gray-200 dark:divide-neutral-700">
+            <x-admin.table.tbody>
               @foreach ($akun1s as $akun1)
                 <tr>
-                  <td class="size-px whitespace-nowrap">
+                  <x-admin.table.td>
                     <div class="px-6 py-3">
                       <span class="text-sm font-semibold text-gray-800 dark:text-neutral-200">{{ $akun1->kode }}</span>
                     </div>
-                  </td>
-                  <td class="h-px w-72 whitespace-nowrap">
+                  </x-admin.table.td>
+                  <x-admin.table.td class="h-px w-72">
                     <div class="px-6 py-3">
                       <span class="text-sm text-gray-500 dark:text-neutral-500">{{ $akun1->nama }}</span>
                     </div>
-                  </td>
-                  <td class="size-px whitespace-nowrap">
+                  </x-admin.table.td>
+                  <x-admin.table.td>
                     <div class="px-6 py-3">
                       <span
                         class="text-sm text-gray-500 dark:text-neutral-500">{{ $akun1->created_at->diffForHumans() }}</span>
                     </div>
-                  </td>
-                  <td class="size-px whitespace-nowrap">
+                  </x-admin.table.td>
+                  <x-admin.table.td>
                     <div class="inline-flex">
                       <div class="px-2 py-1.5">
                         <a class="inline-flex items-center gap-x-1 text-sm text-blue-600 decoration-2 hover:underline font-medium dark:text-blue-500"
@@ -100,11 +100,11 @@
                         </a>
                       </div>
                     </div>
-                  </td>
+                  </x-admin.table.td>
                 </tr>
               @endforeach
-            </tbody>
-          </table>
+            </x-admin.table.tbody>
+          </x-admin.table>
           <!-- End Table -->
 
           <!-- Footer -->
