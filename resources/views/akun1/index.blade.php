@@ -60,18 +60,17 @@
             </x-admin.table.td>
             <x-admin.table.td>
               <div class="inline-flex">
-                <div class="px-2 py-1.5">
-                  <a class="inline-flex items-center gap-x-1 text-sm text-blue-600 decoration-2 hover:underline font-medium dark:text-blue-500"
-                    href="{{ route('akun1.edit', $akun1->id) }}">
-                    Edit
-                  </a>
-                </div>
-                <div class="px-2 py-1.5">
-                  <a class="inline-flex items-center gap-x-1 text-sm text-blue-600 decoration-2 hover:underline font-medium dark:text-blue-500"
-                    href="#">
+                <x-admin.button as="a" href="{{ route('akun1.edit', $akun1->id) }}" variant="link"
+                  size="sm">
+                  Edit
+                </x-admin.button>
+                <form action="{{ route('akun1.destroy', $akun1->id) }}" method="post">
+                  @csrf
+                  @method('DELETE')
+                  <x-admin.button type="submit" variant="link" size="sm">
                     Delete
-                  </a>
-                </div>
+                  </x-admin.button>
+                </form>
               </div>
             </x-admin.table.td>
           </tr>

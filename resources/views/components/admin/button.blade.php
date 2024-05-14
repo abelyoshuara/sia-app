@@ -95,13 +95,13 @@
       ];
   } else {
       $colorClasses = [
-          'dark' => 'text-gray-800 hover:text-blue-600 dark:text-white dark:hover:text-white/70',
-          'gray' => 'text-gray-500 hover:text-blue-600 dark:text-neutral-400 dark:hover:text-white',
+          'dark' => 'border-transparent text-gray-800 hover:text-blue-600 dark:text-white dark:hover:text-white/70',
+          'gray' => 'border-transparent text-gray-500 hover:text-blue-600 dark:text-neutral-400 dark:hover:text-white',
           'teal' => '',
-          'blue' => 'text-blue-600 hover:text-blue-800 dark:text-blue-500 dark:hover:text-blue-400',
+          'blue' => 'border-transparent text-blue-600 hover:text-blue-800 dark:text-blue-500 dark:hover:text-blue-400',
           'red' => '',
           'yellow' => '',
-          'transparent' => 'text-white hover:text-white/80',
+          'transparent' => 'border-transparent text-white hover:text-white/80',
       ];
   }
 

@@ -67,8 +67,10 @@ class Akun1Controller extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Akun1 $akun1)
     {
-        //
+        $akun1->delete();
+
+        return to_route('akun1.index')->with('success', 'Akun 1 deleted successfully.');
     }
 }
