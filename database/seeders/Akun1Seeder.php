@@ -15,31 +15,31 @@ class Akun1Seeder extends Seeder
     {
         DB::table('akun1s')->insert([
             [
-                'kode' => '1',
+                'kode' => 1,
                 'nama' => 'Aktiva',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
-                'kode' => '2',
+                'kode' => 2,
                 'nama' => 'Kewajiban',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
-                'kode' => '3',
+                'kode' => 3,
                 'nama' => 'Modal',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
-                'kode' => '4',
+                'kode' => 4,
                 'nama' => 'Pendapatan',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
-                'kode' => '5',
+                'kode' => 5,
                 'nama' => 'Beban',
                 'created_at' => now(),
                 'updated_at' => now(),
