@@ -43,7 +43,7 @@
             </x-admin.table.thead>
 
             <x-admin.table.tbody>
-              @foreach ($akun1s as $akun1)
+              @forelse ($akun1s as $akun1)
                 <tr>
                   <x-admin.table.td>
                     <div class="px-6 py-3">
@@ -77,7 +77,15 @@
                     </div>
                   </x-admin.table.td>
                 </tr>
-              @endforeach
+              @empty
+                <tr>
+                  <x-admin.table.td colspan="5">
+                    <div class="px-6 py-3 text-center">
+                      <span class="text-sm font-semibold text-red-500">Data belum tersedia!</span>
+                    </div>
+                  </x-admin.table.td>
+                </tr>
+              @endforelse
             </x-admin.table.tbody>
           </x-admin.table>
 
