@@ -12,9 +12,9 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [Controllers\ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [Controllers\ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    Route::resource('akun1', Controllers\Akun1Controller::class);
-    Route::resource('akun2', Controllers\Akun2Controller::class);
-    Route::resource('akun3', Controllers\Akun3Controller::class);
+    Route::resource('akun1', Controllers\Akun1Controller::class)->except(['show']);
+    Route::resource('akun2', Controllers\Akun2Controller::class)->except(['show']);
+    Route::resource('akun3', Controllers\Akun3Controller::class)->except(['show']);
 });
 
 
