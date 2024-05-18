@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Akun1Controller;
+use App\Http\Controllers\Akun2Controller;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -14,6 +15,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     Route::resource('akun1', Akun1Controller::class);
+    Route::resource('akun2', Akun2Controller::class);
 });
 
 
