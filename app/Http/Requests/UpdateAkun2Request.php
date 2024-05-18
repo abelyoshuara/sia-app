@@ -22,7 +22,7 @@ class UpdateAkun2Request extends FormRequest
     public function rules(): array
     {
         return [
-            'kode' => 'required|unique:akun2s,kode,' . $this->akun2->id . ',id',
+            'kode' => 'required|unique:akun2s,kode,' . $this->akun2->kode . ',kode',
             'nama' => 'required',
             'akun1_kode' => 'required'
         ];
