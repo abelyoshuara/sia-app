@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('akun1s', function (Blueprint $table) {
             $table->id();
-            $table->string('kode');
+            $table->unsignedBigInteger('kode')->unique();
             $table->string('nama');
             $table->timestamps();
         });

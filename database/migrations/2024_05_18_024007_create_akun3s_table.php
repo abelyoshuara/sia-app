@@ -13,14 +13,14 @@ return new class extends Migration
     {
         Schema::create('akun3s', function (Blueprint $table) {
             $table->id();
-            $table->string('kode');
+            $table->unsignedBigInteger('kode')->unique();
             $table->string('nama');
             $table->unsignedBigInteger('akun1_id');
             $table->unsignedBigInteger('akun2_id');
             $table->timestamps();
 
-            $table->foreign('akun1_id')->references('id')->on('akun1s');
-            $table->foreign('akun2_id')->references('id')->on('akun2s');
+            $table->foreign('akun1_id')->references('kode')->on('akun1s');
+            $table->foreign('akun2_id')->references('kode')->on('akun2s');
         });
     }
 
