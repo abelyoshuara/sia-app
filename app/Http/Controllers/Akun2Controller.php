@@ -15,7 +15,7 @@ class Akun2Controller extends Controller
      */
     public function index(): View
     {
-        $akun2s = Akun2::all();
+        $akun2s = Akun2::with('akun1')->get();
 
         return view('akun2.index', compact('akun2s'));
     }
