@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Akun3;
 use App\Http\Requests\StoreAkun3Request;
 use App\Http\Requests\UpdateAkun3Request;
+use App\Models\Akun1;
+use App\Models\Akun2;
 use Illuminate\View\View;
 
 class Akun3Controller extends Controller
@@ -22,9 +24,12 @@ class Akun3Controller extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(): View
     {
-        //
+        $akun1s = Akun1::all();
+        $akun2s = Akun2::all();
+
+        return view('akun3.create', compact('akun1s', 'akun2s'));
     }
 
     /**
@@ -32,7 +37,9 @@ class Akun3Controller extends Controller
      */
     public function store(StoreAkun3Request $request)
     {
-        //
+        Akun3::create($request->validated());
+
+        return to_route('akun3.index')->with('success', 'Akun 3 created successfully.');
     }
 
     /**
