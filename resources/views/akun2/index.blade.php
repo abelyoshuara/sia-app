@@ -85,7 +85,7 @@
                         size="sm">
                         Edit
                       </x-admin.button>
-                      <form action="{{ route('akun1.destroy', $akun2->id) }}" method="post">
+                      <form action="{{ route('akun2.destroy', $akun2->id) }}" method="post">
                         @csrf
                         @method('DELETE')
                         <x-admin.button type="submit" variant="link" size="sm">

@@ -74,6 +74,8 @@ class Akun2Controller extends Controller
      */
     public function destroy(Akun2 $akun2)
     {
-        //
+        $akun2->delete();
+
+        return back()->with('success', 'Akun 2 deleted successfully.');
     }
 }
