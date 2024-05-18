@@ -8,6 +8,7 @@ use App\Http\Requests\UpdateAkun3Request;
 use App\Models\Akun1;
 use App\Models\Akun2;
 use Illuminate\View\View;
+use Illuminate\Http\RedirectResponse;
 
 class Akun3Controller extends Controller
 {
@@ -69,8 +70,10 @@ class Akun3Controller extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Akun3 $akun3)
+    public function destroy(Akun3 $akun3): RedirectResponse
     {
-        //
+        $akun3->delete();
+
+        return back()->with('success', 'Akun 3 deleted successfully.');
     }
 }
