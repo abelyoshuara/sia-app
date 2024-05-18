@@ -24,6 +24,7 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             Akun1Seeder::class,
             Akun2Seeder::class,
+            Akun3Seeder::class,
         ]);
     }
 }
