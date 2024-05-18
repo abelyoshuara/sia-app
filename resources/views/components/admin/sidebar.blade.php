@@ -78,7 +78,7 @@
               </x-admin.sidebar.link>
             </li>
             <li>
-              <x-admin.sidebar.link href="/akun3">
+              <x-admin.sidebar.link href="{{ route('akun3.index') }}">
                 Akun 3
               </x-admin.sidebar.link>
             </li>
