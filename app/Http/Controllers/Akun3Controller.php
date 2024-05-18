@@ -36,7 +36,7 @@ class Akun3Controller extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreAkun3Request $request)
+    public function store(StoreAkun3Request $request): RedirectResponse
     {
         Akun3::create($request->validated());
 
