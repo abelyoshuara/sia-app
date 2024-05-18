@@ -54,17 +54,22 @@ class Akun3Controller extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Akun3 $akun3)
+    public function edit(Akun3 $akun3): View
     {
-        //
+        $akun1s = Akun1::all();
+        $akun2s = Akun2::all();
+
+        return view('akun3.edit', compact('akun1s', 'akun2s', 'akun3'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateAkun3Request $request, Akun3 $akun3)
+    public function update(UpdateAkun3Request $request, Akun3 $akun3): RedirectResponse
     {
-        //
+        $akun3->update($request->validated());
+
+        return to_route('akun3.index')->with('success', 'Akun 3 updated successfully.');
     }
 
     /**
