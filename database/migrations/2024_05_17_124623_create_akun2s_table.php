@@ -15,10 +15,10 @@ return new class extends Migration
             $table->id();
             $table->string('kode');
             $table->string('nama');
-            $table->unsignedBigInteger('akun1s_id');
+            $table->unsignedBigInteger('akun1_id');
             $table->timestamps();
 
-            $table->foreign('akun1s_id')->references('id')->on('akun1s');
+            $table->foreign('akun1_id')->references('id')->on('akun1s');
         });
     }
 
@@ -28,7 +28,7 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('akun2s', function (Blueprint $table) {
-            $table->dropForeign(['akun1s_id']);
+            $table->dropForeign(['akun1_id']);
         });
 
         Schema::dropIfExists('akun2s');
