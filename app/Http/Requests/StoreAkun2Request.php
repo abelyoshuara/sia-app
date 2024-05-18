@@ -24,7 +24,7 @@ class StoreAkun2Request extends FormRequest
         return [
             'kode' => 'required|unique:akun2s,kode',
             'nama' => 'required',
-            'akun1_id' => 'required'
+            'akun1_kode' => 'required'
         ];
     }
 
@@ -38,7 +38,7 @@ class StoreAkun2Request extends FormRequest
         return [
             'kode' => 'kode akun 2',
             'nama' => 'nama akun 2',
-            'akun1_id' => 'nama akun 1'
+            'akun1_kode' => 'nama akun 1'
         ];
     }
 }
