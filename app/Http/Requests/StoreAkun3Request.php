@@ -25,7 +25,7 @@ class StoreAkun3Request extends FormRequest
             'kode' => 'required|unique:akun3s,kode',
             'nama' => 'required',
             'akun1_kode' => 'required',
-            'akun2_id' => 'required'
+            'akun2_kode' => 'required'
         ];
     }
 
@@ -40,7 +40,7 @@ class StoreAkun3Request extends FormRequest
             'kode' => 'kode akun 3',
             'nama' => 'nama akun 3',
             'akun1_kode' => 'nama akun 1',
-            'akun2_id' => 'nama akun 2'
+            'akun2_kode' => 'nama akun 2'
         ];
     }
 }

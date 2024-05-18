@@ -38,16 +38,16 @@
             <x-admin.forms.input-error class="hidden hs-error:block" :message="$errors->first('akun1_kode')" />
           </div>
 
-          <div class="space-y-2 @error('akun2_id') error @enderror">
-            <x-admin.forms.input-label for="akun2_id"
+          <div class="space-y-2 @error('akun2_kode') error @enderror">
+            <x-admin.forms.input-label for="akun2_kode"
               class="inline-block text-sm font-medium text-gray-800 dark:text-neutral-200" :value="__('Nama Akun 2')" />
-            <x-admin.forms.advanced-select id="akun2_id" name="akun2_id">
+            <x-admin.forms.advanced-select id="akun2_kode" name="akun2_kode">
               <option value="">Choose</option>
               @foreach ($akun2s as $akun2)
-                <option value="{{ $akun2->kode }}" @selected(old('akun2_id') == $akun2->id)>{{ $akun2->nama }}</option>
+                <option value="{{ $akun2->kode }}" @selected(old('akun2_kode') == $akun2->id)>{{ $akun2->nama }}</option>
               @endforeach
             </x-admin.forms.advanced-select>
-            <x-admin.forms.input-error class="hidden hs-error:block" :message="$errors->first('akun2_id')" />
+            <x-admin.forms.input-error class="hidden hs-error:block" :message="$errors->first('akun2_kode')" />
           </div>
 
           <div class="flex justify-end gap-x-2 pt-1">

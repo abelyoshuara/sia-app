@@ -19,6 +19,6 @@ class Akun3 extends Model
 
     public function akun2(): BelongsTo
     {
-        return $this->belongsTo(Akun2::class, 'akun2_id', 'kode');
+        return $this->belongsTo(Akun2::class, 'akun2_kode', 'kode');
     }
 }
