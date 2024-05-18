@@ -23,9 +23,11 @@ class Akun2Controller extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(): View
     {
-        // 
+        $akun1s = Akun1::all();
+
+        return view('akun2.create', compact('akun1s'));
     }
 
     /**
@@ -33,7 +35,9 @@ class Akun2Controller extends Controller
      */
     public function store(StoreAkun2Request $request)
     {
-        //
+        Akun2::create($request->validated());
+
+        return to_route('akun2.index')->with('success', 'Akun 2 created successfully.');
     }
 
     /**
