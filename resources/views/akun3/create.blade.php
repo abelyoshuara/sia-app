@@ -32,7 +32,7 @@
             <x-admin.forms.advanced-select id="akun1_kode" name="akun1_kode">
               <option value="">Choose</option>
               @foreach ($akun1s as $akun1)
-                <option value="{{ $akun1->kode }}" @selected(old('akun1_kode') == $akun1->id)>{{ $akun1->nama }}</option>
+                <option value="{{ $akun1->kode }}" @selected(old('akun1_kode') == $akun1->kode)>{{ $akun1->nama }}</option>
               @endforeach
             </x-admin.forms.advanced-select>
             <x-admin.forms.input-error class="hidden hs-error:block" :message="$errors->first('akun1_kode')" />
@@ -44,7 +44,7 @@
             <x-admin.forms.advanced-select id="akun2_kode" name="akun2_kode">
               <option value="">Choose</option>
               @foreach ($akun2s as $akun2)
-                <option value="{{ $akun2->kode }}" @selected(old('akun2_kode') == $akun2->id)>{{ $akun2->nama }}</option>
+                <option value="{{ $akun2->kode }}" @selected(old('akun2_kode') == $akun2->kode)>{{ $akun2->nama }}</option>
               @endforeach
             </x-admin.forms.advanced-select>
             <x-admin.forms.input-error class="hidden hs-error:block" :message="$errors->first('akun2_kode')" />
