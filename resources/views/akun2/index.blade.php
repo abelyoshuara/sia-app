@@ -81,7 +81,7 @@
 
                   <x-admin.table.td>
                     <div class="inline-flex">
-                      <x-admin.button as="a" href="{{ route('akun1.edit', $akun2->id) }}" variant="link"
+                      <x-admin.button as="a" href="{{ route('akun2.edit', $akun2->id) }}" variant="link"
                         size="sm">
                         Edit
                       </x-admin.button>

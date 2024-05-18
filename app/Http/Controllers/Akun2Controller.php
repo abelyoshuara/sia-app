@@ -51,9 +51,12 @@ class Akun2Controller extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Akun2 $akun2)
+    public function edit(Akun2 $akun2): View
     {
-        //
+        $akun1s = Akun1::all();
+        $akun2->load('akun1');
+
+        return view('akun2.edit', compact('akun2', 'akun1s'));
     }
 
     /**
@@ -61,7 +64,9 @@ class Akun2Controller extends Controller
      */
     public function update(UpdateAkun2Request $request, Akun2 $akun2)
     {
-        //
+        $akun2->update($request->validated());
+
+        return to_route('akun2.index')->with('success', 'Akun 2 updated successfully.');
     }
 
     /**
