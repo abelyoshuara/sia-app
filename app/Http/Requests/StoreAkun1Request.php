@@ -26,4 +26,17 @@ class StoreAkun1Request extends FormRequest
             'nama' => 'required',
         ];
     }
+
+    /**
+     * Get custom attributes for validator errors.
+     *
+     * @return array<string, string>
+     */
+    public function attributes(): array
+    {
+        return [
+            'kode' => 'kode akun 1',
+            'nama' => 'nama akun 1',
+        ];
+    }
 }
