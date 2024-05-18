@@ -68,14 +68,14 @@
 
                   <x-admin.table.td class="h-px w-72">
                     <div class="px-6 py-3">
-                      <span class="text-sm text-gray-500 dark:text-neutral-500">{{ $akun2->nama }}</span>
+                      <span class="text-sm text-gray-500 dark:text-neutral-500">{{ $akun2->akun1->nama }}</span>
                     </div>
                   </x-admin.table.td>
 
                   <x-admin.table.td>
                     <div class="px-6 py-3">
                       <span
-                        class="text-sm text-gray-500 dark:text-neutral-500">{{ $akun1->created_at->diffForHumans() }}</span>
+                        class="text-sm text-gray-500 dark:text-neutral-500">{{ $akun2->created_at->diffForHumans() }}</span>
                     </div>
                   </x-admin.table.td>
 
