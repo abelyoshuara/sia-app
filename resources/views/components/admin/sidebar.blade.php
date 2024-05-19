@@ -86,6 +86,39 @@
         </div>
       </li>
 
+      <li class="hs-accordion" id="account-accordion">
+        <x-admin.sidebar.dropdown-item :active="request()->is('transaksi-*')">
+          <svg class="flex-shrink-0 mt-0.5 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-credit-card-pay">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            <path d="M12 19h-6a3 3 0 0 1 -3 -3v-8a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v4.5" />
+            <path d="M3 10h18" />
+            <path d="M16 19h6" />
+            <path d="M19 16l3 3l-3 3" />
+            <path d="M7.005 15h.005" />
+            <path d="M11 15h2" />
+          </svg>
+          Transaksi
+        </x-admin.sidebar.dropdown-item>
+
+        <div id="account-accordion-child"
+          class="hs-accordion-content w-full overflow-hidden transition-[height] duration-300 hidden">
+          <ul class="pt-2 ps-2 space-y-1">
+            <li>
+              <x-admin.sidebar.link href="{{ route('transaksi-jurnal.index') }}">
+                Transaksi Jurnal
+              </x-admin.sidebar.link>
+            </li>
+            <li>
+              <x-admin.sidebar.link href="/transaksi-penyesuaian">
+                Transaksi Penyesuaian
+              </x-admin.sidebar.link>
+            </li>
+          </ul>
+        </div>
+      </li>
+
       <li>
         <x-admin.sidebar.link href="/jurnal-umum">
           <svg class="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
@@ -146,54 +179,6 @@
           </svg>
           Naraca Lajur
         </x-admin.sidebar.link>
-      </li>
-
-      <li class="hs-accordion" id="account-accordion">
-        <button type="button"
-          class="hs-accordion-toggle w-full text-start flex items-center gap-x-3.5 py-2 px-2.5 hs-accordion-active:text-blue-600 hs-accordion-active:hover:bg-transparent text-sm text-neutral-700 rounded-lg hover:bg-gray-100 dark:bg-neutral-800 dark:hover:bg-neutral-700 dark:text-neutral-400 dark:hover:text-neutral-300 dark:hs-accordion-active:text-white">
-          <svg class="flex-shrink-0 mt-0.5 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-            stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-credit-card-pay">
-            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-            <path d="M12 19h-6a3 3 0 0 1 -3 -3v-8a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v4.5" />
-            <path d="M3 10h18" />
-            <path d="M16 19h6" />
-            <path d="M19 16l3 3l-3 3" />
-            <path d="M7.005 15h.005" />
-            <path d="M11 15h2" />
-          </svg>
-          Transaksi
-
-          <svg class="hs-accordion-active:block ms-auto hidden size-4" xmlns="http://www.w3.org/2000/svg"
-            width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="m18 15-6-6-6 6" />
-          </svg>
-
-          <svg class="hs-accordion-active:hidden ms-auto block size-4" xmlns="http://www.w3.org/2000/svg"
-            width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="m6 9 6 6 6-6" />
-          </svg>
-        </button>
-
-        <div id="account-accordion-child"
-          class="hs-accordion-content w-full overflow-hidden transition-[height] duration-300 hidden">
-          <ul class="pt-2 ps-2 space-y-1">
-            <li>
-              <a class="flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-neutral-700 rounded-lg hover:bg-gray-100 dark:hover:bg-neutral-700 dark:bg-neutral-800 dark:text-neutral-400 dark:hover:text-neutral-300"
-                href="{{ route('dashboard') }}">
-                Transaksi Jurnal
-              </a>
-            </li>
-            <li>
-              <a class="flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-neutral-700 rounded-lg hover:bg-gray-100 dark:hover:bg-neutral-700 dark:bg-neutral-800 dark:text-neutral-400 dark:hover:text-neutral-300"
-                href="{{ route('dashboard') }}">
-                Transaksi Penyesuaian
-              </a>
-            </li>
-          </ul>
-        </div>
       </li>
 
       <li class="hs-accordion" id="projects-accordion">
