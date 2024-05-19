@@ -1,3 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@media (prefers-color-scheme: dark) {
+    ::-webkit-calendar-picker-indicator {
+        filter: invert(1);
+    }
+}
+
+@media (prefers-color-scheme: light) {
+    ::-webkit-calendar-picker-indicator {
+        filter: invert(0);
+    }
+}
