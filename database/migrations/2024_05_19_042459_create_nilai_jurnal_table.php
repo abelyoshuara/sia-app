@@ -11,9 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('nilai', function (Blueprint $table) {
+        Schema::create('nilai_jurnal', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('transaksi_id');
+            $table->unsignedBigInteger('transaksi_jurnal_id');
             $table->unsignedBigInteger('akun3_kode');
             $table->float('debit');
             $table->float('kredit');
@@ -21,7 +21,7 @@ return new class extends Migration
             $table->timestamps();
             $table->softDeletes();
 
-            $table->foreign('transaksi_id')->references('id')->on('transaksi')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('transaksi_jurnal_id')->references('id')->on('transaksi_jurnal')->onUpdate('cascade')->onDelete('cascade');
             $table->foreign('akun3_kode')->references('kode')->on('akun3s')->onUpdate('cascade')->onDelete('cascade');
             $table->foreign('status_id')->references('id')->on('status')->onUpdate('cascade')->onDelete('cascade');
         });
@@ -32,10 +32,10 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('nilai', function (Blueprint $table) {
-            $table->dropForeign(['transaksi_id', 'akun3_kode', 'status_id']);
+        Schema::table('nilai_jurnal', function (Blueprint $table) {
+            $table->dropForeign(['transaksi_jurnal_id', 'akun3_kode', 'status_id']);
         });
 
-        Schema::dropIfExists('nilai');
+        Schema::dropIfExists('nilai_jurnal');
     }
 };

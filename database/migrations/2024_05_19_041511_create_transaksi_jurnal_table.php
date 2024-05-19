@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('transaksi', function (Blueprint $table) {
+        Schema::create('transaksi_jurnal', function (Blueprint $table) {
             $table->id();
             $table->string('kwitansi');
             $table->date('tanggal');
@@ -27,10 +27,10 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('transaksi', function (Blueprint $table) {
+        Schema::table('transaksi_jurnal', function (Blueprint $table) {
             $table->dropSoftDeletes();
         });
 
-        Schema::dropIfExists('transaksi');
+        Schema::dropIfExists('transaksi_jurnal');
     }
 };
