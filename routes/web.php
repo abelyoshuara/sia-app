@@ -15,6 +15,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('akun1', Controllers\Akun1Controller::class)->except(['show']);
     Route::resource('akun2', Controllers\Akun2Controller::class)->except(['show']);
     Route::resource('akun3', Controllers\Akun3Controller::class)->except(['show']);
+    Route::resource('transaksi-jurnal', Controllers\TransaksiJurnalController::class);
 });
 
 
