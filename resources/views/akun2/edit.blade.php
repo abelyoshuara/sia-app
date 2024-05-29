@@ -13,24 +13,21 @@
         <div class="space-y-4">
 
           <div class="space-y-2">
-            <x-admin.forms.input-label for="kode"
-              class="inline-block text-sm font-medium text-gray-800 dark:text-neutral-200" :value="__('Kode Akun 2')" />
+            <x-admin.forms.input-label for="kode" :value="__('Kode Akun 2')" />
             <x-admin.forms.text-input id="kode" name="kode" :value="old('kode', $akun2->kode)" placeholder="Masukan Kode Akun 2"
               :error="$errors->first('kode')" />
             <x-admin.forms.input-error :message="$errors->first('kode')" />
           </div>
 
           <div class="space-y-2">
-            <x-admin.forms.input-label for="nama"
-              class="inline-block text-sm font-medium text-gray-800 dark:text-neutral-200" :value="__('Nama Akun 2')" />
+            <x-admin.forms.input-label for="nama" :value="__('Nama Akun 2')" />
             <x-admin.forms.text-input id="nama" name="nama" :value="old('nama', $akun2->nama)" placeholder="Masukan Nama Akun 2"
               :error="$errors->first('nama')" />
             <x-admin.forms.input-error :message="$errors->first('nama')" />
           </div>
 
           <div class="space-y-2 @error('akun1_kode') error @enderror">
-            <x-admin.forms.input-label for="akun1_kode"
-              class="inline-block text-sm font-medium text-gray-800 dark:text-neutral-200" :value="__('Nama Akun 1')" />
+            <x-admin.forms.input-label for="akun1_kode" :value="__('Nama Akun 1')" />
             <x-admin.forms.advanced-select id="akun1_kode" name="akun1_kode">
               <option value="">Choose</option>
               @foreach ($akun1s as $akun1)

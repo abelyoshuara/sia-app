@@ -18,8 +18,7 @@
 
             <!-- Form Group -->
             <div class="space-y-2">
-              <x-admin.forms.input-label for="email"
-                class="inline-block text-sm font-medium text-gray-800 dark:text-neutral-200" :value="__('Email address')" />
+              <x-admin.forms.input-label for="email" :value="__('Email address')" />
               <x-admin.forms.text-input class="dark:bg-neutral-900" id="email" name="email" :value="old('email')"
                 placeholder="Enter email address" :error="$errors->first('email')" />
               <x-admin.forms.input-error :message="$errors->first('email')" />
@@ -28,8 +27,7 @@
 
             <!-- Form Group -->
             <div class="space-y-2">
-              <x-admin.forms.input-label for="password"
-                class="inline-block text-sm font-medium text-gray-800 dark:text-neutral-200" :value="__('Password')" />
+              <x-admin.forms.input-label for="password" :value="__('Password')" />
               <x-admin.forms.text-input type="password" class="dark:bg-neutral-900" id="password" name="password"
                 :value="old('password')" placeholder="Enter password" :error="$errors->first('password')" />
               <x-admin.forms.input-error :message="$errors->first('password')" />
@@ -39,11 +37,10 @@
             <!-- Checkbox -->
             <div class="flex items-center">
               <div class="flex">
-                <input id="remember-me" name="remember-me" type="checkbox"
-                  class="shrink-0 mt-0.5 border-gray-200 rounded text-blue-600 focus:ring-blue-500 dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800">
+                <x-admin.forms.checkbox-input class="dark:bg-neutral-900" id="remember_me" name="remember" />
               </div>
               <div class="ms-3">
-                <label for="remember-me" class="text-sm dark:text-white">Remember me</label>
+                <x-admin.forms.input-label for="remember_me" :value="__('Remember me')" />
               </div>
             </div>
             <!-- End Checkbox -->

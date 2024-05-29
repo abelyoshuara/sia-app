@@ -11,32 +11,28 @@
 
         <div class="w-full lg:w-1/4 px-4 space-y-4">
           <div class="space-y-2">
-            <x-admin.forms.input-label for="kwitansi"
-              class="inline-block text-sm font-medium text-gray-800 dark:text-neutral-200" :value="__('Kwitansi')" />
+            <x-admin.forms.input-label for="kwitansi" :value="__('Kwitansi')" />
             <x-admin.forms.text-input id="kwitansi" name="kwitansi" :value="old('kwitansi')" placeholder="Masukan Kwitansi"
               :error="$errors->first('kwitansi')" />
             <x-admin.forms.input-error :message="$errors->first('kwitansi')" />
           </div>
 
           <div class="space-y-2">
-            <x-admin.forms.input-label for="tanggal"
-              class="inline-block text-sm font-medium text-gray-800 dark:text-neutral-200" :value="__('Tanggal')" />
+            <x-admin.forms.input-label for="tanggal" :value="__('Tanggal')" />
             <x-admin.forms.text-input type="date" id="tanggal" name="tanggal" :value="old('tanggal')"
               placeholder="Masukan Tanggal" :error="$errors->first('tanggal')" />
             <x-admin.forms.input-error :message="$errors->first('tanggal')" />
           </div>
 
           <div class="space-y-2">
-            <x-admin.forms.input-label for="deskripsi"
-              class="inline-block text-sm font-medium text-gray-800 dark:text-neutral-200" :value="__('Deskripsi')" />
+            <x-admin.forms.input-label for="deskripsi" :value="__('Deskripsi')" />
             <x-admin.forms.textarea id="deskripsi" name="deskripsi" placeholder="Masukan Deskripsi"
               :error="$errors->first('deskripsi')">{{ old('deskripsi') }}</x-admin.forms.textarea>
             <x-admin.forms.input-error :message="$errors->first('deskripsi')" />
           </div>
 
           <div class="space-y-2">
-            <x-admin.forms.input-label for="keterangan_jurnal"
-              class="inline-block text-sm font-medium text-gray-800 dark:text-neutral-200" :value="__('Keterangan Jurnal')" />
+            <x-admin.forms.input-label for="keterangan_jurnal" :value="__('Keterangan Jurnal')" />
             <x-admin.forms.textarea id="keterangan_jurnal" name="keterangan_jurnal"
               placeholder="Masukan Keterangan Jurnal"
               :error="$errors->first('keterangan_jurnal')">{{ old('keterangan_jurnal') }}</x-admin.forms.textarea>
