@@ -17,6 +17,8 @@
 
   <!-- Scripts -->
   @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+  {{ $styles ?? '' }}
 </head>
 
 <body class="font-sans antialiased bg-gray-50 dark:bg-neutral-900">
@@ -50,6 +52,8 @@
   </div>
   <!-- End Content -->
   <!-- ========== END MAIN CONTENT ========== -->
+
+  {{ $scripts ?? '' }}
 </body>
 
 </html>

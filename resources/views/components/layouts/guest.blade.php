@@ -17,12 +17,16 @@
 
   <!-- Scripts -->
   @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+  {{ $styles ?? '' }}
 </head>
 
 <body class="font-sans antialiased bg-gray-100 flex h-full items-center py-16 dark:bg-neutral-800">
   <main class="w-full max-w-lg mx-auto p-6">
     {{ $slot }}
   </main>
+
+  {{ $scripts ?? '' }}
 </body>
 
 </html>
