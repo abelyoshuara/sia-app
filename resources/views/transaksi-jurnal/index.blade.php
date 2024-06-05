@@ -78,7 +78,8 @@
 
                   <x-admin.table.td class="h-px w-72">
                     <div class="px-6 py-3">
-                      <span class="text-sm text-gray-500 dark:text-neutral-500">{{ $item->tanggal }}</span>
+                      <span
+                        class="text-sm text-gray-500 dark:text-neutral-500">{{ date('d M Y', strtotime($item->tanggal)) }}</span>
                     </div>
                   </x-admin.table.td>
 
@@ -96,6 +97,10 @@
 
                   <x-admin.table.td>
                     <div class="inline-flex">
+                      <x-admin.button as="a" href="{{ route('transaksi-jurnal.edit', $item->id) }}"
+                        variant="link" size="sm">
+                        Detail
+                      </x-admin.button>
                       <x-admin.button as="a" href="{{ route('transaksi-jurnal.edit', $item->id) }}"
                         variant="link" size="sm">
                         Edit
