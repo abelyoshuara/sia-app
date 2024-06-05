@@ -1,4 +1,102 @@
 <x-layouts.admin title="Transaksi Jurnal">
+  <x-slot:scripts>
+    <script>
+      const form = document.querySelector('#modal-nilai form');
+      const table = document.querySelector('#tabel-nilai');
+      let nilai = [];
+
+      const getAllNilai = () => {
+        const tbody = document.querySelector('#tabel-nilai tbody');
+        let html = '';
+
+        if (nilai.length) {
+          nilai.forEach((n, i) => {
+            html += `
+              <tr>
+                <x-admin.table.td>
+                  <div class="px-6 py-3">
+                    <span class="text-sm font-semibold text-gray-800 dark:text-neutral-200">${i+1}</span>
+                  </div>
+                </x-admin.table.td>
+
+                <x-admin.table.td class="h-px w-72">
+                  <div class="px-6 py-3">
+                    <span class="text-sm text-gray-500 dark:text-neutral-500">${n.nama_akun}</span>
+                  </div>
+                </x-admin.table.td>
+
+                <x-admin.table.td class="h-px w-72">
+                  <div class="px-6 py-3">
+                    <span class="text-sm text-gray-500 dark:text-neutral-500">${n.debit}</span>
+                  </div>
+                </x-admin.table.td>
+
+                <x-admin.table.td class="h-px w-72">
+                  <div class="px-6 py-3">
+                    <span class="text-sm text-gray-500 dark:text-neutral-500">${n.kredit}</span>
+                  </div>
+                </x-admin.table.td>
+
+                <x-admin.table.td>
+                  <div class="px-6 py-3">
+                    <span class="text-sm text-gray-500 dark:text-neutral-500">${n.status_nama}</span>
+                  </div>
+                </x-admin.table.td>
+
+                <x-admin.table.td>
+                  <x-admin.button variant="link" size="sm" class="nilai-delete" data-id="${i}">
+                    Delete
+                  </x-admin.button>
+                </x-admin.table.td>
+              </tr>`;
+          });
+        } else {
+          html += `<tr>
+                    <x-admin.table.td class="h-px w-72 text-center" colspan="6">
+                      <div class="px-6 py-3">
+                        <span class="text-sm text-gray-500 dark:text-neutral-500">Data belum tersedia</span>
+                      </div>
+                    </x-admin.table.td>
+                  </tr>`;
+        }
+
+        tbody.innerHTML = html;
+      }
+
+      const addNilai = (values) => nilai.push(values); // nilai = [...nilai, values];
+
+      const deleteNilai = (index) => nilai.splice(index, 1);
+
+      getAllNilai();
+
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const selKode = form.kode_akun;
+        const selStatus = form.status;
+
+        addNilai({
+          kode_akun: form.kode_akun.value,
+          nama_akun: selKode.options[selKode.selectedIndex].text,
+          debit: form.debit.value,
+          kredit: form.kredit.value,
+          status: form.status.value,
+          status_nama: selStatus.options[selStatus.selectedIndex].text,
+        });
+
+        form.reset();
+        getAllNilai();
+      });
+
+      table.addEventListener('click', (e) => {
+        if (e.target.classList.contains('nilai-delete')) {
+          const index = e.target.dataset.id;
+          deleteNilai(index);
+          getAllNilai();
+        }
+      });
+    </script>
+  </x-slot>
+
   <x-admin.card>
     <x-admin.card.header>
       <x-slot:title>Transaksi Jurnal</x-slot>
@@ -41,14 +139,14 @@
         </div>
 
         <div class="w-full lg:w-3/4 px-4">
-          <x-admin.button variant="white" color="dark" size="sm" class="mb-4"
-            data-hs-overlay="#hs-slide-down-animation-modal">
+          <x-admin.button variant="white" color="dark" size="sm" class="mb-4" data-hs-overlay="#modal-nilai">
             Tambah
           </x-admin.button>
           <div class="-m-1.5 overflow-x-auto">
             <div class="p-1.5 min-w-full inline-block align-middle">
               <div class="border rounded-lg overflow-hidden dark:border-neutral-700">
-                <x-admin.table class="min-w-full divide-y divide-gray-200 dark:divide-neutral-700">
+
+                <x-admin.table class="min-w-full divide-y divide-gray-200 dark:divide-neutral-700" id="tabel-nilai">
                   <x-admin.table.thead>
                     <tr>
                       <x-admin.table.th class="ps-6 text-start whitespace-nowrap">
@@ -100,52 +198,9 @@
                     </tr>
                   </x-admin.table.thead>
 
-                  <x-admin.table.tbody>
-                    <tr>
-                      <x-admin.table.td>
-                        <div class="px-6 py-3">
-                          <span class="text-sm font-semibold text-gray-800 dark:text-neutral-200">x</span>
-                        </div>
-                      </x-admin.table.td>
-
-                      <x-admin.table.td class="h-px w-72">
-                        <div class="px-6 py-3">
-                          <span class="text-sm text-gray-500 dark:text-neutral-500">Lorem ipsum dolor sit!</span>
-                        </div>
-                      </x-admin.table.td>
-
-                      <x-admin.table.td class="h-px w-72">
-                        <div class="px-6 py-3">
-                          <span class="text-sm text-gray-500 dark:text-neutral-500">Lorem ipsum dolor sit!</span>
-                        </div>
-                      </x-admin.table.td>
-
-                      <x-admin.table.td class="h-px w-72">
-                        <div class="px-6 py-3">
-                          <span class="text-sm text-gray-500 dark:text-neutral-500">Lorem ipsum dolor sit!</span>
-                        </div>
-                      </x-admin.table.td>
-
-                      <x-admin.table.td>
-                        <div class="px-6 py-3">
-                          <span class="text-sm text-gray-500 dark:text-neutral-500">Lorem ipsum dolor sit!</span>
-                        </div>
-                      </x-admin.table.td>
-
-                      <x-admin.table.td>
-                        <div class="inline-flex">
-                          <form action="{{ route('transaksi-jurnal.destroy', 1) }}" method="post">
-                            @csrf
-                            @method('DELETE')
-                            <x-admin.button type="submit" variant="link" size="sm">
-                              Delete
-                            </x-admin.button>
-                          </form>
-                        </div>
-                      </x-admin.table.td>
-                    </tr>
-                  </x-admin.table.tbody>
+                  <x-admin.table.tbody></x-admin.table.tbody>
                 </x-admin.table>
+
               </div>
             </div>
           </div>
@@ -161,7 +216,7 @@
     </x-admin.card.content>
   </x-admin.card>
 
-  <div id="hs-slide-down-animation-modal"
+  <div id="modal-nilai"
     class="hs-overlay hidden size-full fixed top-0 start-0 z-[80] overflow-x-hidden overflow-y-auto pointer-events-none">
     <div
       class="hs-overlay-open:mt-7 hs-overlay-open:opacity-100 hs-overlay-open:duration-500 mt-0 opacity-0 ease-out transition-all sm:max-w-lg sm:w-full m-3 sm:mx-auto">
@@ -173,7 +228,7 @@
           </h3>
           <button type="button"
             class="flex justify-center items-center size-7 text-sm font-semibold rounded-full border border-transparent text-gray-800 hover:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none dark:text-white dark:hover:bg-neutral-700"
-            data-hs-overlay="#hs-slide-down-animation-modal">
+            data-hs-overlay="#modal-nilai">
             <span class="sr-only">Close</span>
             <svg class="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
               viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -183,22 +238,50 @@
             </svg>
           </button>
         </div>
-        <div class="p-4 overflow-y-auto">
-          <p class="mt-1 text-gray-800 dark:text-neutral-400">
-            This is a wider card with supporting text below as a natural lead-in to additional content.
-          </p>
-        </div>
-        <div class="flex justify-end items-center gap-x-2 py-3 px-4 border-t dark:border-neutral-700">
-          <button type="button"
-            class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-white dark:hover:bg-neutral-800"
-            data-hs-overlay="#hs-slide-down-animation-modal">
-            Close
-          </button>
-          <button type="button"
-            class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none">
-            Save changes
-          </button>
-        </div>
+        <form action="" method="POST">
+          <div class="p-4 overflow-y-auto space-y-4">
+
+            <div class="space-y-2">
+              <x-admin.forms.input-label for="kode_akun" :value="__('Kode Akun')" />
+              <x-admin.forms.select id="kode_akun" name="kode_akun" required>
+                @foreach ($akun3 as $item)
+                  <option value="{{ $item->id }}">{{ $item->nama }}</option>
+                @endforeach
+              </x-admin.forms.select>
+              <x-admin.forms.input-error class="hidden hs-error:block" :message="$errors->first('kode_akun')" />
+            </div>
+
+            <div class="space-y-2">
+              <x-admin.forms.input-label for="debit" :value="__('Debit')" />
+              <x-admin.forms.text-input type="number" id="debit" name="debit" :value="old('debit')"
+                placeholder="Masukan Debit" :error="$errors->first('debit')" />
+              <x-admin.forms.input-error :message="$errors->first('debit')" />
+            </div>
+
+            <div class="space-y-2">
+              <x-admin.forms.input-label for="kredit" :value="__('Kredit')" />
+              <x-admin.forms.text-input type="number" id="kredit" name="kredit" :value="old('kredit')"
+                placeholder="Masukan Kredit" :error="$errors->first('kredit')" />
+              <x-admin.forms.input-error :message="$errors->first('kredit')" />
+            </div>
+
+            <div class="space-y-2">
+              <x-admin.forms.input-label for="status" :value="__('Status')" />
+              <x-admin.forms.select id="status" name="status">
+                @foreach ($status as $item)
+                  <option value="{{ $item->id }}">{{ $item->nama }}</option>
+                @endforeach
+              </x-admin.forms.select>
+              <x-admin.forms.input-error class="hidden hs-error:block" :message="$errors->first('status')" />
+            </div>
+
+          </div>
+          <div class="flex justify-end items-center gap-x-2 py-3 px-4 border-t dark:border-neutral-700">
+            <x-admin.button type="button" variant="white" color="dark"
+              data-hs-overlay="#modal-nilai">Close</x-admin.button>
+            <x-admin.button type="submit" data-hs-overlay="#modal-nilai">Save</x-admin.button>
+          </div>
+        </form>
       </div>
     </div>
   </div>

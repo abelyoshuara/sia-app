@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\TransaksiJurnal;
 use App\Http\Requests\StoreTransaksiJurnalRequest;
 use App\Http\Requests\UpdateTransaksiJurnalRequest;
+use App\Models\Akun3;
+use App\Models\Status;
 use Illuminate\View\View;
 
 class TransaksiJurnalController extends Controller
@@ -24,7 +26,10 @@ class TransaksiJurnalController extends Controller
      */
     public function create(): View
     {
-        return view('transaksi-jurnal.create');
+        $akun3 = Akun3::all();
+        $status = Status::all();
+
+        return view('transaksi-jurnal.create', compact('akun3', 'status'));
     }
 
     /**
@@ -32,7 +37,9 @@ class TransaksiJurnalController extends Controller
      */
     public function store(StoreTransaksiJurnalRequest $request)
     {
-        //
+        TransaksiJurnal::create($request->validated());
+
+        return to_route('transaksi-jurnal.index')->with('success', 'Transaksi Jurnal created successfully.');
     }
 
     /**
