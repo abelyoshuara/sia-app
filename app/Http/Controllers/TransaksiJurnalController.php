@@ -122,6 +122,8 @@ class TransaksiJurnalController extends Controller
      */
     public function destroy(TransaksiJurnal $transaksiJurnal)
     {
-        //
+        $transaksiJurnal->delete();
+
+        return back()->with('success', 'Data deleted successfully.');
     }
 }
