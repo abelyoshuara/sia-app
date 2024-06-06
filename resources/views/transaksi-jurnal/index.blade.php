@@ -8,7 +8,7 @@
             <x-slot:subtitle>Daftar Transaksi Jurnal</x-slot>
             <x-slot:actions>
               <x-admin.button as="a" href="{{ route('transaksi-jurnal.create') }}" size="sm">
-                Buat Transaksi Jurnal
+                Tambah
               </x-admin.button>
             </x-slot>
           </x-admin.card.header>
@@ -103,13 +103,13 @@
                       </x-admin.button>
                       <x-admin.button as="a" href="{{ route('transaksi-jurnal.edit', $item->id) }}"
                         variant="link" size="sm">
-                        Edit
+                        Ubah
                       </x-admin.button>
                       <form action="{{ route('transaksi-jurnal.destroy', $item->id) }}" method="post">
                         @csrf
                         @method('DELETE')
                         <x-admin.button type="submit" variant="link" size="sm">
-                          Delete
+                          Hapus
                         </x-admin.button>
                       </form>
                     </div>
@@ -128,7 +128,7 @@
           </x-admin.table>
 
           <x-admin.card.footer>
-            <x-slot:total>{{ count([]) }}</x-slot>
+            <x-slot:total>{{ count($transaksiJurnal) }}</x-slot>
             <x-slot:pagination>
               <div class="inline-flex gap-x-2">
                 <button type="button"
