@@ -67,23 +67,54 @@ class TransaksiJurnalController extends Controller
      */
     public function show(TransaksiJurnal $transaksiJurnal)
     {
-        //
+        return response()->json([
+            'status' => 'success',
+            'message' => 'Data retrieved successfully',
+            'data' => $transaksiJurnal->load('nilaiJurnal', 'nilaiJurnal.akun3', 'nilaiJurnal.status'),
+        ]);
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(TransaksiJurnal $transaksiJurnal)
+    public function edit(TransaksiJurnal $transaksiJurnal): View
     {
-        //
+        $akun3 = Akun3::all();
+        $status = Status::all();
+
+        return view(
+            'transaksi-jurnal.edit',
+            compact('akun3', 'status', 'transaksiJurnal')
+        );
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateTransaksiJurnalRequest $request, TransaksiJurnal $transaksiJurnal)
+    public function update(UpdateTransaksiJurnalRequest $request, TransaksiJurnal $transaksiJurnal): JsonResponse
     {
-        //
+        $transaksiJurnal->update($request->validated());
+        $nilai = $request->nilai;
+
+        NilaiJurnal::where('transaksi_jurnal_id', $transaksiJurnal->id)->delete();
+
+        $data = [];
+        foreach ($nilai as &$n) {
+            $data[] = [
+                'transaksi_jurnal_id' => $transaksiJurnal->id,
+                'akun3_kode' => $n['akun3_kode'],
+                'debit' => $n['debit'],
+                'kredit' => $n['kredit'],
+                'status_id' => $n['status_id'],
+            ];
+        }
+
+        NilaiJurnal::insert($data);
+
+        return response()->json([
+            'status' => 'success',
+            'message' => 'Data updated successfully',
+        ]);
     }
 
     /**
