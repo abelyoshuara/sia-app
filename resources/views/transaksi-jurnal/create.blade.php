@@ -1,11 +1,17 @@
 <x-layouts.admin title="Transaksi Jurnal">
   <x-slot:scripts>
     <script>
-      const form = document.querySelector('#modal-nilai form');
+      const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+      const formModal = document.querySelector('#modal-nilai form');
+      const formTransaksi = document.querySelector('.form-transaksi');
       const table = document.querySelector('#tabel-nilai');
       let nilai = [];
 
-      const getAllNilai = () => {
+      const showResponseMessage = (message) => {
+        alert(message);
+      }
+
+      const renderAllNilai = () => {
         const tbody = document.querySelector('#tabel-nilai tbody');
         let html = '';
 
@@ -67,32 +73,62 @@
 
       const deleteNilai = (index) => nilai.splice(index, 1);
 
-      getAllNilai();
+      const insertNilai = async (data) => {
+        try {
+          const response = await fetch('/transaksi-jurnal', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'X-CSRF-TOKEN': csrfToken,
+            },
+            body: JSON.stringify(data),
+          });
 
-      form.addEventListener('submit', (e) => {
+          const responseJson = await response.json();
+          showResponseMessage(responseJson.message);
+        } catch (error) {
+          showResponseMessage(error);
+        }
+      }
+
+      renderAllNilai();
+
+      formModal.addEventListener('submit', (e) => {
         e.preventDefault();
-        const selKode = form.kode_akun;
-        const selStatus = form.status;
+        const selKode = formModal.kode_akun;
+        const selStatus = formModal.status;
 
         addNilai({
-          kode_akun: form.kode_akun.value,
+          kode_akun: formModal.kode_akun.value,
           nama_akun: selKode.options[selKode.selectedIndex].text,
-          debit: form.debit.value,
-          kredit: form.kredit.value,
-          status: form.status.value,
+          debit: formModal.debit.value,
+          kredit: formModal.kredit.value,
+          status: formModal.status.value,
           status_nama: selStatus.options[selStatus.selectedIndex].text,
         });
 
-        form.reset();
-        getAllNilai();
+        formModal.reset();
+        renderAllNilai();
       });
 
       table.addEventListener('click', (e) => {
         if (e.target.classList.contains('nilai-delete')) {
           const index = e.target.dataset.id;
           deleteNilai(index);
-          getAllNilai();
+          renderAllNilai();
         }
+      });
+
+      formTransaksi.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        insertNilai({
+          kwitansi: formTransaksi.kwitansi.value,
+          tanggal: formTransaksi.tanggal.value,
+          deskripsi: formTransaksi.deskripsi.value,
+          keterangan_jurnal: formTransaksi.keterangan_jurnal.value,
+          nilai,
+        });
       });
     </script>
   </x-slot>
@@ -104,7 +140,8 @@
     </x-admin.card.header>
 
     <x-admin.card.content class="lg:w-full">
-      <form action="{{ route('transaksi-jurnal.store') }}" method="POST" class="flex flex-wrap -mx-4 gap-y-5">
+      <form action="{{ route('transaksi-jurnal.store') }}" method="POST"
+        class="flex flex-wrap -mx-4 gap-y-5 form-transaksi">
         @csrf
 
         <div class="w-full lg:w-1/4 px-4 space-y-4">
@@ -207,9 +244,9 @@
         </div>
 
         <div class="px-4 flex justify-end gap-x-2">
-          <x-admin.button type="submit">Save</x-admin.button>
+          <x-admin.button type="submit">Simpan</x-admin.button>
           <x-admin.button as="a" href="{{ route('transaksi-jurnal.index') }}" variant="white"
-            color="dark">Cancel</x-admin.button>
+            color="dark">Kembali</x-admin.button>
         </div>
 
       </form>
@@ -224,7 +261,7 @@
         class="flex flex-col bg-white border shadow-sm rounded-xl pointer-events-auto dark:bg-neutral-800 dark:border-neutral-700 dark:shadow-neutral-700/70">
         <div class="flex justify-between items-center py-3 px-4 border-b dark:border-neutral-700">
           <h3 class="font-bold text-gray-800 dark:text-white">
-            Modal title
+            Form Tambah Nilai
           </h3>
           <button type="button"
             class="flex justify-center items-center size-7 text-sm font-semibold rounded-full border border-transparent text-gray-800 hover:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none dark:text-white dark:hover:bg-neutral-700"
@@ -245,7 +282,7 @@
               <x-admin.forms.input-label for="kode_akun" :value="__('Kode Akun')" />
               <x-admin.forms.select id="kode_akun" name="kode_akun" required>
                 @foreach ($akun3 as $item)
-                  <option value="{{ $item->id }}">{{ $item->nama }}</option>
+                  <option value="{{ $item->kode }}">{{ $item->nama }}</option>
                 @endforeach
               </x-admin.forms.select>
               <x-admin.forms.input-error class="hidden hs-error:block" :message="$errors->first('kode_akun')" />
@@ -278,8 +315,8 @@
           </div>
           <div class="flex justify-end items-center gap-x-2 py-3 px-4 border-t dark:border-neutral-700">
             <x-admin.button type="button" variant="white" color="dark"
-              data-hs-overlay="#modal-nilai">Close</x-admin.button>
-            <x-admin.button type="submit" data-hs-overlay="#modal-nilai">Save</x-admin.button>
+              data-hs-overlay="#modal-nilai">Batal</x-admin.button>
+            <x-admin.button type="submit" data-hs-overlay="#modal-nilai">Tambah</x-admin.button>
           </div>
         </form>
       </div>

@@ -6,7 +6,10 @@ use App\Models\TransaksiJurnal;
 use App\Http\Requests\StoreTransaksiJurnalRequest;
 use App\Http\Requests\UpdateTransaksiJurnalRequest;
 use App\Models\Akun3;
+use App\Models\NilaiJurnal;
 use App\Models\Status;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\JsonResponse;
 use Illuminate\View\View;
 
 class TransaksiJurnalController extends Controller
@@ -35,17 +38,34 @@ class TransaksiJurnalController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreTransaksiJurnalRequest $request)
+    public function store(StoreTransaksiJurnalRequest $request): JsonResponse
     {
-        TransaksiJurnal::create($request->validated());
+        $transaksiJurnal = TransaksiJurnal::create($request->validated());
+        $nilai = $request->nilai;
 
-        return to_route('transaksi-jurnal.index')->with('success', 'Transaksi Jurnal created successfully.');
+        $data = [];
+        foreach ($nilai as &$n) {
+            $data[] = [
+                'transaksi_jurnal_id' => $transaksiJurnal->id,
+                'akun3_kode' => $n['kode_akun'],
+                'debit' => $n['debit'],
+                'kredit' => $n['kredit'],
+                'status_id' => $n['status'],
+            ];
+        }
+
+        NilaiJurnal::insert($data);
+
+        return response()->json([
+            'status' => 'success',
+            'message' => 'Data saved successfully',
+        ]);
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(TransaksiJurnal $transaksi)
+    public function show(TransaksiJurnal $transaksiJurnal)
     {
         //
     }
@@ -53,7 +73,7 @@ class TransaksiJurnalController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(TransaksiJurnal $transaksi)
+    public function edit(TransaksiJurnal $transaksiJurnal)
     {
         //
     }
@@ -61,7 +81,7 @@ class TransaksiJurnalController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateTransaksiJurnalRequest $request, TransaksiJurnal $transaksi)
+    public function update(UpdateTransaksiJurnalRequest $request, TransaksiJurnal $transaksiJurnal)
     {
         //
     }
@@ -69,7 +89,7 @@ class TransaksiJurnalController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(TransaksiJurnal $transaksi)
+    public function destroy(TransaksiJurnal $transaksiJurnal)
     {
         //
     }
