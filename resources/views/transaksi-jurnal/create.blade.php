@@ -4,8 +4,9 @@
       const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
       const formModal = document.querySelector('#modal-nilai form');
       const formTransaksi = document.querySelector('.form-transaksi');
+      const buttonSubmit = formTransaksi.querySelector('button[type="submit"]');
       const table = document.querySelector('#tabel-nilai');
-      let nilai = [];
+      let nilai = JSON.parse(localStorage.getItem('TRANSAKSI_JURNAL') || '[]');
 
       const showResponseMessage = (message) => {
         alert(message);
@@ -69,12 +70,20 @@
         tbody.innerHTML = html;
       }
 
-      const addNilai = (values) => nilai.push(values); // nilai = [...nilai, values];
+      const addNilai = (values) => {
+        // nilai = [...nilai, values];
+        nilai.push(values);
+        localStorage.setItem('TRANSAKSI_JURNAL', JSON.stringify(nilai));
+      };
 
-      const deleteNilai = (index) => nilai.splice(index, 1);
+      const deleteNilai = (index) => {
+        nilai.splice(index, 1);
+        localStorage.setItem('TRANSAKSI_JURNAL', JSON.stringify(nilai));
+      };
 
       const insertNilai = async (data) => {
         try {
+          buttonSubmit.disabled = true;
           const response = await fetch('/transaksi-jurnal', {
             method: 'POST',
             headers: {
@@ -88,6 +97,12 @@
           showResponseMessage(responseJson.message);
         } catch (error) {
           showResponseMessage(error);
+        } finally {
+          buttonSubmit.disabled = false;
+          localStorage.removeItem('TRANSAKSI_JURNAL');
+          nilai = [];
+          formTransaksi.reset();
+          renderAllNilai();
         }
       }
 
@@ -148,29 +163,29 @@
           <div class="space-y-2">
             <x-admin.forms.input-label for="kwitansi" :value="__('Kwitansi')" />
             <x-admin.forms.text-input id="kwitansi" name="kwitansi" :value="old('kwitansi')" placeholder="Masukan Kwitansi"
-              :error="$errors->first('kwitansi')" />
+              :error="$errors->first('kwitansi')" required />
             <x-admin.forms.input-error :message="$errors->first('kwitansi')" />
           </div>
 
           <div class="space-y-2">
             <x-admin.forms.input-label for="tanggal" :value="__('Tanggal')" />
             <x-admin.forms.text-input type="date" id="tanggal" name="tanggal" :value="old('tanggal')"
-              placeholder="Masukan Tanggal" :error="$errors->first('tanggal')" />
+              placeholder="Masukan Tanggal" :error="$errors->first('tanggal')" required />
             <x-admin.forms.input-error :message="$errors->first('tanggal')" />
           </div>
 
           <div class="space-y-2">
             <x-admin.forms.input-label for="deskripsi" :value="__('Deskripsi')" />
-            <x-admin.forms.textarea id="deskripsi" name="deskripsi" placeholder="Masukan Deskripsi"
-              :error="$errors->first('deskripsi')">{{ old('deskripsi') }}</x-admin.forms.textarea>
+            <x-admin.forms.textarea id="deskripsi" name="deskripsi" placeholder="Masukan Deskripsi" :error="$errors->first('deskripsi')"
+              required>{{ old('deskripsi') }}</x-admin.forms.textarea>
             <x-admin.forms.input-error :message="$errors->first('deskripsi')" />
           </div>
 
           <div class="space-y-2">
             <x-admin.forms.input-label for="keterangan_jurnal" :value="__('Keterangan Jurnal')" />
             <x-admin.forms.textarea id="keterangan_jurnal" name="keterangan_jurnal"
-              placeholder="Masukan Keterangan Jurnal"
-              :error="$errors->first('keterangan_jurnal')">{{ old('keterangan_jurnal') }}</x-admin.forms.textarea>
+              placeholder="Masukan Keterangan Jurnal" :error="$errors->first('keterangan_jurnal')"
+              required>{{ old('keterangan_jurnal') }}</x-admin.forms.textarea>
             <x-admin.forms.input-error :message="$errors->first('keterangan_jurnal')" />
           </div>
         </div>
