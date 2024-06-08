@@ -8,6 +8,7 @@ use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
+use Illuminate\Support\Facades\Gate;
 
 class UserController extends Controller
 {
@@ -70,6 +71,8 @@ class UserController extends Controller
      */
     public function destroy(User $user): RedirectResponse
     {
+        Gate::authorize('delete', $user);
+
         $user->delete();
 
         return back()->with('success', 'User deleted successfully.');
