@@ -64,25 +64,56 @@ class TransaksiPenyesuaianController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(TransaksiPenyesuaian $transaksiPenyesuaian)
+    public function show(TransaksiPenyesuaian $transaksiPenyesuaian): JsonResponse
     {
-        //
+        return response()->json([
+            'status' => 'success',
+            'message' => 'Data retrieved successfully',
+            'data' => $transaksiPenyesuaian->load('nilaiPenyesuaian', 'nilaiPenyesuaian.akun3', 'nilaiPenyesuaian.status'),
+        ]);
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(TransaksiPenyesuaian $transaksiPenyesuaian)
+    public function edit(TransaksiPenyesuaian $transaksiPenyesuaian): View
     {
-        //
+        $akun3 = Akun3::all();
+        $status = Status::all();
+
+        return view(
+            'transaksi-penyesuaian.edit',
+            compact('akun3', 'status', 'transaksiPenyesuaian')
+        );
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateTransaksiPenyesuaianRequest $request, TransaksiPenyesuaian $transaksiPenyesuaian)
+    public function update(UpdateTransaksiPenyesuaianRequest $request, TransaksiPenyesuaian $transaksiPenyesuaian): JsonResponse
     {
-        //
+        $transaksiPenyesuaian->update($request->validated());
+        $nilai_penyesuaian = $request->nilai_penyesuaian;
+
+        NilaiPenyesuaian::where('transaksi_penyesuaian_id', $transaksiPenyesuaian->id)->delete();
+
+        $data = [];
+        foreach ($nilai_penyesuaian as &$n) {
+            $data[] = [
+                'transaksi_penyesuaian_id' => $transaksiPenyesuaian->id,
+                'akun3_kode' => $n['akun3_kode'],
+                'debit' => $n['debit'],
+                'kredit' => $n['kredit'],
+                'status_id' => $n['status_id'],
+            ];
+        }
+
+        NilaiPenyesuaian::insert($data);
+
+        return response()->json([
+            'status' => 'success',
+            'message' => 'Data updated successfully',
+        ]);
     }
 
     /**
