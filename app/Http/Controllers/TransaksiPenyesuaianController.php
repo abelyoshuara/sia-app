@@ -8,6 +8,7 @@ use App\Http\Requests\UpdateTransaksiPenyesuaianRequest;
 use App\Models\Akun3;
 use App\Models\NilaiPenyesuaian;
 use App\Models\Status;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\JsonResponse;
 use Illuminate\View\View;
 
@@ -119,8 +120,10 @@ class TransaksiPenyesuaianController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(TransaksiPenyesuaian $transaksiPenyesuaian)
+    public function destroy(TransaksiPenyesuaian $transaksiPenyesuaian): RedirectResponse
     {
-        //
+        $transaksiPenyesuaian->delete();
+
+        return back()->with('success', 'Data deleted successfully.');
     }
 }
