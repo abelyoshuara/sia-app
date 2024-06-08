@@ -1,8 +1,8 @@
 <x-layouts.admin title="Transaksi Penyesuaian">
   <x-slot:scripts>
     <script>
-      const table = document.querySelector('#table-transaksi-jurnal');
-      const tabelNilaiTransaksiJurnal = document.querySelector('#detail-modal #tabel-detail-nilai-transaksi-jurnal');
+      const table = document.querySelector('#table-transaksi-penyesuaian');
+      const tabelNilaiTransaksiJurnal = document.querySelector('#detail-modal #tabel-detail-nilai-transaksi-penyesuaian');
       const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
 
       const renderTableNilaiTransaksiJurnal = (data) => {
@@ -58,7 +58,7 @@
 
       const fetchTransaksiJurnalById = async (id) => {
         try {
-          const response = await fetch(`/transaksi-jurnal/${id}`, {
+          const response = await fetch(`/transaksi-penyesuaian/${id}`, {
             method: 'GET',
             headers: {
               'Content-Type': 'application/json',
@@ -109,7 +109,7 @@
             </x-slot>
           </x-admin.card.header>
 
-          <x-admin.table id="table-transaksi-jurnal">
+          <x-admin.table id="table-transaksi-penyesuaian">
             <x-admin.table.thead>
               <tr>
                 <x-admin.table.th class="ps-6 text-start whitespace-nowrap">
@@ -168,12 +168,6 @@
 
                   <x-admin.table.td class="h-px w-72">
                     <div class="px-6 py-3">
-                      <span class="text-sm text-gray-500 dark:text-neutral-500">{{ $item->kwitansi }}</span>
-                    </div>
-                  </x-admin.table.td>
-
-                  <x-admin.table.td class="h-px w-72">
-                    <div class="px-6 py-3">
                       <span
                         class="text-sm text-gray-500 dark:text-neutral-500">{{ date('d M Y', strtotime($item->tanggal)) }}</span>
                     </div>
@@ -181,13 +175,19 @@
 
                   <x-admin.table.td class="h-px w-72">
                     <div class="px-6 py-3">
-                      <span class="text-sm text-gray-500 dark:text-neutral-500">{{ $item->keterangan_jurnal }}</span>
+                      <span class="text-sm text-gray-500 dark:text-neutral-500">{{ $item->deskripsi }}</span>
+                    </div>
+                  </x-admin.table.td>
+
+                  <x-admin.table.td class="h-px w-72">
+                    <div class="px-6 py-3">
+                      <span class="text-sm text-gray-500 dark:text-neutral-500">{{ $item->nilai }}</span>
                     </div>
                   </x-admin.table.td>
 
                   <x-admin.table.td>
                     <div class="px-6 py-3">
-                      <span class="text-sm text-gray-500 dark:text-neutral-500">{{ $item->deskripsi }}</span>
+                      <span class="text-sm text-gray-500 dark:text-neutral-500">{{ $item->waktu }}</span>
                     </div>
                   </x-admin.table.td>
 
@@ -197,11 +197,11 @@
                         data-id="{{ $item->id }}" class="button-detail">
                         Detail
                       </x-admin.button>
-                      <x-admin.button as="a" href="{{ route('transaksi-jurnal.edit', $item->id) }}"
+                      <x-admin.button as="a" href="{{ route('transaksi-penyesuaian.edit', $item->id) }}"
                         variant="link" size="sm">
                         Ubah
                       </x-admin.button>
-                      <form action="{{ route('transaksi-jurnal.destroy', $item->id) }}" method="post">
+                      <form action="{{ route('transaksi-penyesuaian.destroy', $item->id) }}" method="post">
                         @csrf
                         @method('DELETE')
                         <x-admin.button type="submit" variant="link" size="sm">
@@ -281,7 +281,7 @@
           <div class="-m-1.5 overflow-x-auto">
             <div class="p-1.5 min-w-full inline-block align-middle">
               <div class="border rounded-lg dark:border-neutral-700">
-                <x-admin.table id="tabel-detail-transaksi-jurnal">
+                <x-admin.table id="tabel-detail-transaksi-penyesuaian">
                   <x-admin.table.tbody>
 
                     <tr>
@@ -346,7 +346,7 @@
           <div class="-m-1.5 overflow-x-auto">
             <div class="p-1.5 min-w-full inline-block align-middle">
               <div class="border rounded-lg dark:border-neutral-700">
-                <x-admin.table id="tabel-detail-nilai-transaksi-jurnal">
+                <x-admin.table id="tabel-detail-nilai-transaksi-penyesuaian">
                   <x-admin.table.thead>
                     <tr>
                       <x-admin.table.th class="ps-6 text-start whitespace-nowrap">
