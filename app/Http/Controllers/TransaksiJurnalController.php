@@ -51,6 +51,8 @@ class TransaksiJurnalController extends Controller
                 'debit' => $n['debit'],
                 'kredit' => $n['kredit'],
                 'status_id' => $n['status'],
+                'created_at' => now(),
+                'updated_at' => now(),
             ];
         }
 
@@ -106,6 +108,8 @@ class TransaksiJurnalController extends Controller
                 'debit' => $n['debit'],
                 'kredit' => $n['kredit'],
                 'status_id' => $n['status_id'],
+                'created_at' => now(),
+                'updated_at' => now(),
             ];
         }
 
