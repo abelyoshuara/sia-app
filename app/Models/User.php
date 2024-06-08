@@ -45,4 +45,21 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    /**
+     * Check is user have certain role.
+     *
+     * @param string|array $role
+     * @return bool
+     */
+    public function hasRole(string|array $role)
+    {
+        if (is_array($role)) {
+            return in_array($this->role, $role);
+        }
+
+        $roleArray = explode(',', $role);
+        $roleArray = array_map('trim', $roleArray);
+        return in_array($this->role, $roleArray);
+    }
 }
