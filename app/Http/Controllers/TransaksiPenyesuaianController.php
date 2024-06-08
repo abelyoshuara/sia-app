@@ -6,7 +6,9 @@ use App\Models\TransaksiPenyesuaian;
 use App\Http\Requests\StoreTransaksiPenyesuaianRequest;
 use App\Http\Requests\UpdateTransaksiPenyesuaianRequest;
 use App\Models\Akun3;
+use App\Models\NilaiPenyesuaian;
 use App\Models\Status;
+use Illuminate\Http\JsonResponse;
 use Illuminate\View\View;
 
 class TransaksiPenyesuaianController extends Controller
@@ -35,9 +37,28 @@ class TransaksiPenyesuaianController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreTransaksiPenyesuaianRequest $request)
+    public function store(StoreTransaksiPenyesuaianRequest $request): JsonResponse
     {
-        //
+        $transaksiPenyesuaian = TransaksiPenyesuaian::create($request->validated());
+        $nilai_penyesuaian = $request->nilai_penyesuaian;
+
+        $data = [];
+        foreach ($nilai_penyesuaian as &$n) {
+            $data[] = [
+                'transaksi_penyesuaian_id' => $transaksiPenyesuaian->id,
+                'akun3_kode' => $n['kode_akun'],
+                'debit' => $n['debit'],
+                'kredit' => $n['kredit'],
+                'status_id' => $n['status'],
+            ];
+        }
+
+        NilaiPenyesuaian::insert($data);
+
+        return response()->json([
+            'status' => 'success',
+            'message' => 'Data saved successfully',
+        ]);
     }
 
     /**
