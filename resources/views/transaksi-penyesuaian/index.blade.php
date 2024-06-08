@@ -1,5 +1,8 @@
 <x-layouts.admin title="Transaksi Penyesuaian">
   <x-slot:scripts>
+    {{-- Moment JS --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.30.1/moment.min.js"></script>
+
     <script>
       const table = document.querySelector('#table-transaksi-penyesuaian');
       const tabelNilaiTransaksiPenyesuaian = document.querySelector(
@@ -77,7 +80,7 @@
             nilai_penyesuaian
           } = responseJson.data;
 
-          document.querySelector('#tanggal').textContent = tanggal;
+          document.querySelector('#tanggal').textContent = moment(tanggal).format('DD MMM YYYY');
           document.querySelector('#deskripsi').textContent = deskripsi;
           document.querySelector('#nilai').textContent = nilai;
           document.querySelector('#waktu').textContent = waktu;

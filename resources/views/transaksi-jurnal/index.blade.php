@@ -1,5 +1,8 @@
 <x-layouts.admin title="Transaksi Jurnal">
   <x-slot:scripts>
+    {{-- Moment JS --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.30.1/moment.min.js"></script>
+
     <script>
       const table = document.querySelector('#table-transaksi-jurnal');
       const tabelNilaiTransaksiJurnal = document.querySelector('#detail-modal #tabel-detail-nilai-transaksi-jurnal');
@@ -76,7 +79,7 @@
           } = responseJson.data;
 
           document.querySelector('#kwitansi').textContent = kwitansi;
-          document.querySelector('#tanggal').textContent = tanggal;
+          document.querySelector('#tanggal').textContent = moment(tanggal).format('DD MMM YYYY');
           document.querySelector('#deskripsi').textContent = deskripsi;
           document.querySelector('#keterangan_jurnal').textContent = keterangan_jurnal;
 
