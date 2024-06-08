@@ -65,7 +65,7 @@ class TransaksiJurnalController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(TransaksiJurnal $transaksiJurnal)
+    public function show(TransaksiJurnal $transaksiJurnal): JsonResponse
     {
         return response()->json([
             'status' => 'success',
@@ -120,7 +120,7 @@ class TransaksiJurnalController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(TransaksiJurnal $transaksiJurnal)
+    public function destroy(TransaksiJurnal $transaksiJurnal): RedirectResponse
     {
         $transaksiJurnal->delete();
 
