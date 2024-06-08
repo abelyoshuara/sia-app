@@ -2,10 +2,11 @@
   <x-slot:scripts>
     <script>
       const table = document.querySelector('#table-transaksi-penyesuaian');
-      const tabelNilaiTransaksiJurnal = document.querySelector('#detail-modal #tabel-detail-nilai-transaksi-penyesuaian');
+      const tabelNilaiTransaksiPenyesuaian = document.querySelector(
+        '#detail-modal #tabel-detail-nilai-transaksi-penyesuaian');
       const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
 
-      const renderTableNilaiTransaksiJurnal = (data) => {
+      const renderTableNilaiTransaksiPenyesuaian = (data) => {
         let html = '';
 
         if (data.length > 0) {
@@ -53,10 +54,10 @@
                   </tr>`;
         }
 
-        tabelNilaiTransaksiJurnal.querySelector('tbody').innerHTML = html;
+        tabelNilaiTransaksiPenyesuaian.querySelector('tbody').innerHTML = html;
       }
 
-      const fetchTransaksiJurnalById = async (id) => {
+      const fetchTransaksiPenyesuaianById = async (id) => {
         try {
           const response = await fetch(`/transaksi-penyesuaian/${id}`, {
             method: 'GET',
@@ -68,19 +69,21 @@
 
           const responseJson = await response.json();
           const {
-            kwitansi,
+            waktu,
+            jumlah,
             tanggal,
             deskripsi,
-            keterangan_jurnal,
-            nilai_jurnal: nilai
+            nilai,
+            nilai_penyesuaian
           } = responseJson.data;
 
-          document.querySelector('#kwitansi').textContent = kwitansi;
           document.querySelector('#tanggal').textContent = tanggal;
           document.querySelector('#deskripsi').textContent = deskripsi;
-          document.querySelector('#keterangan_jurnal').textContent = keterangan_jurnal;
+          document.querySelector('#nilai').textContent = nilai;
+          document.querySelector('#waktu').textContent = waktu;
+          document.querySelector('#jumlah').textContent = jumlah;
 
-          renderTableNilaiTransaksiJurnal(nilai);
+          renderTableNilaiTransaksiPenyesuaian(nilai_penyesuaian);
         } catch (error) {
           console.error(error);
         }
@@ -89,7 +92,7 @@
       table.addEventListener('click', (event) => {
         if (event.target.classList.contains('button-detail')) {
           const id = event.target.dataset.id;
-          fetchTransaksiJurnalById(id);
+          fetchTransaksiPenyesuaianById(id);
         }
       });
     </script>
@@ -285,19 +288,6 @@
                   <x-admin.table.tbody>
 
                     <tr>
-                      <x-admin.table.td class="w-1/5">
-                        <div class="px-6 py-3">
-                          <span class="text-sm font-semibold text-gray-800 dark:text-neutral-200">Kwitansi</span>
-                        </div>
-                      </x-admin.table.td>
-                      <x-admin.table.td class="h-px w-72">
-                        <div class="px-6 py-3">
-                          <span class="text-sm text-gray-500 dark:text-neutral-500" id="kwitansi"></span>
-                        </div>
-                      </x-admin.table.td>
-                    </tr>
-
-                    <tr>
                       <x-admin.table.td>
                         <div class="px-6 py-3">
                           <span class="text-sm font-semibold text-gray-800 dark:text-neutral-200">Tanggal</span>
@@ -313,13 +303,12 @@
                     <tr>
                       <x-admin.table.td>
                         <div class="px-6 py-3">
-                          <span class="text-sm font-semibold text-gray-800 dark:text-neutral-200">Keterangan
-                            Jurnal</span>
+                          <span class="text-sm font-semibold text-gray-800 dark:text-neutral-200">Deskripsi</span>
                         </div>
                       </x-admin.table.td>
                       <x-admin.table.td class="h-px w-72">
                         <div class="px-6 py-3">
-                          <span class="text-sm text-gray-500 dark:text-neutral-500" id="keterangan_jurnal"></span>
+                          <span class="text-sm text-gray-500 dark:text-neutral-500" id="deskripsi"></span>
                         </div>
                       </x-admin.table.td>
                     </tr>
@@ -327,12 +316,38 @@
                     <tr>
                       <x-admin.table.td>
                         <div class="px-6 py-3">
-                          <span class="text-sm font-semibold text-gray-800 dark:text-neutral-200">Deskripsi</span>
+                          <span class="text-sm font-semibold text-gray-800 dark:text-neutral-200">Nilai</span>
                         </div>
                       </x-admin.table.td>
                       <x-admin.table.td class="h-px w-72">
                         <div class="px-6 py-3">
-                          <span class="text-sm text-gray-500 dark:text-neutral-500" id="deskripsi"></span>
+                          <span class="text-sm text-gray-500 dark:text-neutral-500" id="nilai"></span>
+                        </div>
+                      </x-admin.table.td>
+                    </tr>
+
+                    <tr>
+                      <x-admin.table.td class="w-1/5">
+                        <div class="px-6 py-3">
+                          <span class="text-sm font-semibold text-gray-800 dark:text-neutral-200">Waktu</span>
+                        </div>
+                      </x-admin.table.td>
+                      <x-admin.table.td class="h-px w-72">
+                        <div class="px-6 py-3">
+                          <span class="text-sm text-gray-500 dark:text-neutral-500" id="waktu"></span>
+                        </div>
+                      </x-admin.table.td>
+                    </tr>
+
+                    <tr>
+                      <x-admin.table.td class="w-1/5">
+                        <div class="px-6 py-3">
+                          <span class="text-sm font-semibold text-gray-800 dark:text-neutral-200">Jumlah</span>
+                        </div>
+                      </x-admin.table.td>
+                      <x-admin.table.td class="h-px w-72">
+                        <div class="px-6 py-3">
+                          <span class="text-sm text-gray-500 dark:text-neutral-500" id="jumlah"></span>
                         </div>
                       </x-admin.table.td>
                     </tr>
