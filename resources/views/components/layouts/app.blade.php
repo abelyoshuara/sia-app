@@ -53,6 +53,7 @@
   <!-- End Content -->
   <!-- ========== END MAIN CONTENT ========== -->
 
+  <!-- Dark Mode -->
   <script>
     const html = document.querySelector('html');
     const isLightOrAuto = localStorage.getItem('hs_theme') === 'light' || (localStorage.getItem('hs_theme') === 'auto' &&
