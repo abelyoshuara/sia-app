@@ -1,74 +1,82 @@
 <x-layouts.app title="Dashboard">
+  <!-- Grid -->
   <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-    <x-admin.card>
-      <div class="p-4 md:p-5">
-        <div class="flex items-center gap-x-2">
-          <p class="text-xs uppercase tracking-wide text-gray-500 dark:text-neutral-500">
-            Pageviews
-          </p>
-        </div>
 
-        <div class="mt-1 flex items-center gap-x-2">
-          <h3 class="text-xl sm:text-2xl font-medium text-gray-800 dark:text-neutral-200">
-            92,913
-          </h3>
-        </div>
-      </div>
-    </x-admin.card>
+    <!-- Card -->
+    <x-admin.card-stats label="Pengguna" value="29">
+      <x-slot:icon>
+        <svg class="flex-shrink-0 size-5 text-gray-600 dark:text-neutral-300" xmlns="http://www.w3.org/2000/svg"
+          width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-users">
+          <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+          <circle cx="9" cy="7" r="4" />
+          <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+          <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+        </svg>
+      </x-slot>
+    </x-admin.card-stats>
+    <!-- End Card -->
 
-    <x-admin.card>
-      <div class="p-4 md:p-5">
-        <div class="flex items-center gap-x-2">
-          <p class="text-xs uppercase tracking-wide text-gray-500 dark:text-neutral-500">
-            Pageviews
-          </p>
-        </div>
+    <!-- Card -->
+    <x-admin.card-stats label="Barang" value="29">
+      <x-slot:icon>
+        <svg class="flex-shrink-0 size-5 text-gray-600 dark:text-neutral-400" xmlns="http://www.w3.org/2000/svg"
+          width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-package">
+          <path d="m7.5 4.27 9 5.15" />
+          <path
+            d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z" />
+          <path d="m3.3 7 8.7 5 8.7-5" />
+          <path d="M12 22V12" />
+        </svg>
+      </x-slot>
+    </x-admin.card-stats>
+    <!-- End Card -->
 
-        <div class="mt-1 flex items-center gap-x-2">
-          <h3 class="text-xl sm:text-2xl font-medium text-gray-800 dark:text-neutral-200">
-            92,913
-          </h3>
-        </div>
-      </div>
-    </x-admin.card>
+    <!-- Card -->
+    <x-admin.card-stats label="Barang Masuk" value="29">
+      <x-slot:icon>
+        <svg class="flex-shrink-0 size-5 text-gray-600 dark:text-neutral-400" xmlns="http://www.w3.org/2000/svg"
+          width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-package-plus">
+          <path d="M16 16h6" />
+          <path d="M19 13v6" />
+          <path
+            d="M21 10V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l2-1.14" />
+          <path d="m7.5 4.27 9 5.15" />
+          <polyline points="3.29 7 12 12 20.71 7" />
+          <line x1="12" x2="12" y1="22" y2="12" />
+        </svg>
+      </x-slot>
+    </x-admin.card-stats>
+    <!-- End Card -->
 
-    <x-admin.card>
-      <div class="p-4 md:p-5">
-        <div class="flex items-center gap-x-2">
-          <p class="text-xs uppercase tracking-wide text-gray-500 dark:text-neutral-500">
-            Pageviews
-          </p>
-        </div>
+    <!-- Card -->
+    <x-admin.card-stats label="Barang Keluar" value="29">
+      <x-slot:icon>
+        <svg class="flex-shrink-0 size-5 text-gray-600 dark:text-neutral-400" xmlns="http://www.w3.org/2000/svg"
+          width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-package-minus">
+          <path d="M16 16h6" />
+          <path
+            d="M21 10V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l2-1.14" />
+          <path d="m7.5 4.27 9 5.15" />
+          <polyline points="3.29 7 12 12 20.71 7" />
+          <line x1="12" x2="12" y1="22" y2="12" />
+        </svg>
+      </x-slot>
+    </x-admin.card-stats>
+    <!-- End Card -->
 
-        <div class="mt-1 flex items-center gap-x-2">
-          <h3 class="text-xl sm:text-2xl font-medium text-gray-800 dark:text-neutral-200">
-            92,913
-          </h3>
-        </div>
-      </div>
-    </x-admin.card>
-
-    <x-admin.card>
-      <div class="p-4 md:p-5">
-        <div class="flex items-center gap-x-2">
-          <p class="text-xs uppercase tracking-wide text-gray-500 dark:text-neutral-500">
-            Pageviews
-          </p>
-        </div>
-
-        <div class="mt-1 flex items-center gap-x-2">
-          <h3 class="text-xl sm:text-2xl font-medium text-gray-800 dark:text-neutral-200">
-            92,913
-          </h3>
-        </div>
-      </div>
-    </x-admin.card>
   </div>
+  <!-- End Grid -->
 
+  <!-- Card -->
   <div class="flex flex-col">
     <div class="-m-1.5 overflow-x-auto">
       <div class="p-1.5 min-w-full inline-block align-middle">
         <x-admin.card class="overflow-hidden">
+
           <x-admin.card.header>
             <x-slot:title>Users</x-slot>
             <x-slot:subtitle>Add users, edit and more.</x-slot>
@@ -79,6 +87,7 @@
               <x-admin.button as="a" href="{{ route('akun1.create') }}" size="sm">Add user</x-admin.button>
             </x-slot>
           </x-admin.card.header>
+
           <x-admin.table>
             <x-admin.table.thead>
               <tr>
@@ -209,6 +218,7 @@
               </tr>
             </x-admin.table.tbody>
           </x-admin.table>
+
           <x-admin.card.footer>
             <x-slot:total>10</x-slot>
             <x-slot:pagination>
@@ -235,8 +245,10 @@
               </div>
             </x-slot>
           </x-admin.card.footer>
+
         </x-admin.card>
       </div>
     </div>
   </div>
+  <!-- End Card -->
 </x-layouts.app>
