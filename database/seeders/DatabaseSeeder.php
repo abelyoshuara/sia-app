@@ -26,6 +26,8 @@ class DatabaseSeeder extends Seeder
             Akun2Seeder::class,
             Akun3Seeder::class,
             StatusSeeder::class,
+            TransaksiJurnalSeeder::class,
+            TransaksiPenyesuaianSeeder::class,
         ]);
     }
 }
