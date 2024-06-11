@@ -1,4 +1,4 @@
-<x-layouts.admin title="Transaksi Penyesuaian">
+<x-layouts.app title="Transaksi Penyesuaian">
   <x-slot:scripts>
     <script>
       const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
@@ -352,4 +352,4 @@
       </div>
     </div>
   </div>
-</x-layouts.admin>
+</x-layouts.app>

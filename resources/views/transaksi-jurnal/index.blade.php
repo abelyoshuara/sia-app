@@ -1,4 +1,4 @@
-<x-layouts.admin title="Transaksi Jurnal">
+<x-layouts.app title="Transaksi Jurnal">
   <x-slot:scripts>
     {{-- Moment JS --}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.30.1/moment.min.js"></script>
@@ -418,4 +418,4 @@
       </div>
     </div>
   </div>
-</x-layouts.admin>
+</x-layouts.app>

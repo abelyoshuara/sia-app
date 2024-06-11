@@ -1,4 +1,4 @@
-<x-layouts.admin title="Akun 2">
+<x-layouts.app title="Akun 2">
   <x-admin.card>
     <x-admin.card.header>
       <x-slot:title>Akun 2</x-slot>
@@ -45,4 +45,4 @@
       </form>
     </x-admin.card.content>
   </x-admin.card>
-</x-layouts.admin>
+</x-layouts.app>

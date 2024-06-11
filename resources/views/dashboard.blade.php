@@ -1,4 +1,4 @@
-<x-layouts.admin title="Dashboard">
+<x-layouts.app title="Dashboard">
   <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
     <x-admin.card>
       <div class="p-4 md:p-5">
@@ -239,4 +239,4 @@
       </div>
     </div>
   </div>
-</x-layouts.admin>
+</x-layouts.app>
