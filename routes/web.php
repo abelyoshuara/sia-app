@@ -16,10 +16,16 @@ Route::middleware('auth')->group(function () {
         ->middleware('role:admin');
 
     Route::resource('akun1', Controllers\Akun1Controller::class)->except(['show']);
+
     Route::resource('akun2', Controllers\Akun2Controller::class)->except(['show']);
+
     Route::resource('akun3', Controllers\Akun3Controller::class)->except(['show']);
+
     Route::resource('transaksi-jurnal', Controllers\TransaksiJurnalController::class);
+
     Route::resource('transaksi-penyesuaian', Controllers\TransaksiPenyesuaianController::class);
+
+    Route::get('jurnal-umum', [Controllers\JurnalUmumController::class, 'index'])->name('jurnal-umum.index');
 });
 
 
