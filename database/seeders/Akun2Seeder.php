@@ -13,7 +13,7 @@ class Akun2Seeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('akun2s')->insert([
+        DB::table('akun2')->insert([
             [
                 'kode' => 11,
                 'nama' => 'Aktiva Lancar',

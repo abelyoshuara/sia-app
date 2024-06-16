@@ -10,6 +10,8 @@ class Akun2 extends Model
 {
     use HasFactory;
 
+    protected $table = 'akun2';
+
     protected $guarded = ['id'];
 
     public function akun1(): BelongsTo

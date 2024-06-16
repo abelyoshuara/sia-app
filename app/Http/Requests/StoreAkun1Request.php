@@ -22,7 +22,7 @@ class StoreAkun1Request extends FormRequest
     public function rules(): array
     {
         return [
-            'kode' => 'required|unique:akun1s,kode',
+            'kode' => 'required|unique:akun1,kode',
             'nama' => 'required',
         ];
     }

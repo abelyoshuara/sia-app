@@ -11,16 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('akun3s', function (Blueprint $table) {
+        Schema::create('akun2', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('kode')->unique();
             $table->string('nama');
             $table->unsignedBigInteger('akun1_kode');
-            $table->unsignedBigInteger('akun2_kode');
             $table->timestamps();
 
-            $table->foreign('akun1_kode')->references('kode')->on('akun1s');
-            $table->foreign('akun2_kode')->references('kode')->on('akun2s');
+            $table->foreign('akun1_kode')->references('kode')->on('akun1');
         });
     }
 
@@ -29,10 +27,10 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('akun3s', function (Blueprint $table) {
-            $table->dropForeign(['akun1_kode', 'akun2_kode']);
+        Schema::table('akun2', function (Blueprint $table) {
+            $table->dropForeign(['akun1_kode']);
         });
 
-        Schema::dropIfExists('akun3s');
+        Schema::dropIfExists('akun2');
     }
 };

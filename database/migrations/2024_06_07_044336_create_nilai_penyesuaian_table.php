@@ -22,7 +22,7 @@ return new class extends Migration
             $table->softDeletes();
 
             $table->foreign('transaksi_penyesuaian_id')->references('id')->on('transaksi_penyesuaian')->onUpdate('cascade')->onDelete('cascade');
-            $table->foreign('akun3_kode')->references('kode')->on('akun3s')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('akun3_kode')->references('kode')->on('akun3')->onUpdate('cascade')->onDelete('cascade');
             $table->foreign('status_id')->references('id')->on('status')->onUpdate('cascade')->onDelete('cascade');
         });
     }
