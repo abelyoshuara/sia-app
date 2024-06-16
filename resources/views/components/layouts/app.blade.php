@@ -38,19 +38,26 @@
   <!-- Content -->
   <div class="w-full lg:ps-64">
     <div class="p-4 sm:p-6 space-y-4 sm:space-y-6">
-
-      @if (session('success'))
-        <x-admin.alert type="success" :message="session('success')" />
-      @elseif (session('error'))
-        <x-admin.alert type="error" :message="session('error')" />
-      @elseif (session('info'))
-        <x-admin.alert type="info" :message="session('info')" />
-      @endif
-
       {{ $slot }}
     </div>
   </div>
   <!-- End Content -->
+
+  <!-- Toast -->
+  <div class="fixed bottom-4 end-4 z-50" x-data="{ show: true }" x-show="show"
+    x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 scale-90"
+    x-transition:enter-end="opacity-100 scale-100" x-transition:leave="transition ease-in duration-300"
+    x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 scale-90"
+    x-init="setTimeout(() => show = false, 3000)">
+    @if (session('success'))
+      <x-admin.toast class="min-w-80" :message="session('success')" status="success" />
+    @elseif (session('error'))
+      <x-admin.toast class="min-w-80" :message="session('error')" status="error" />
+    @elseif (session('info'))
+      <x-admin.toast class="min-w-80" :message="session('info')" />
+    @endif
+  </div>
+  <!-- End Toast -->
   <!-- ========== END MAIN CONTENT ========== -->
 
   <!-- Dark Mode -->
