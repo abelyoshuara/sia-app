@@ -59,7 +59,7 @@
                   <x-admin.table.td>
                     <div class="px-6 py-3">
                       <span
-                        class="text-sm font-semibold text-gray-800 dark:text-neutral-200">{{ $loop->iteration }}</span>
+                        class="text-sm font-semibold text-gray-800 dark:text-neutral-200">{{ $loop->iteration + $users->firstItem() - 1 }}</span>
                     </div>
                   </x-admin.table.td>
 
