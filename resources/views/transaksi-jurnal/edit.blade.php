@@ -170,12 +170,16 @@
     </script>
   </x-slot>
 
-  <x-admin.card id="card" data-id="{{ $transaksiJurnal->id }}">
-    <x-admin.card.header>
-      <x-slot:title>Transaksi Jurnal</x-slot>
-      <x-slot:subtitle>Ubah Transaksi Jurnal</x-slot>
-    </x-admin.card.header>
+  <div class="space-y-1">
+    <h2 class="text-xl font-semibold text-gray-800 dark:text-neutral-200">
+      Transaksi Jurnal
+    </h2>
+    <p class="text-sm text-gray-600 dark:text-neutral-400">
+      Form ubah transaksi jurnal.
+    </p>
+  </div>
 
+  <x-admin.card id="card" data-id="{{ $transaksiJurnal->id }}">
     <x-admin.card.content class="lg:w-full">
       <form action="{{ route('transaksi-jurnal.update', $transaksiJurnal->id) }}" method="POST"
         class="flex flex-wrap -mx-4 gap-y-5 form-transaksi">

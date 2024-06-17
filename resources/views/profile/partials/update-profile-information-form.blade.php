@@ -1,9 +1,13 @@
-<x-admin.card>
-  <x-admin.card.header>
-    <x-slot:title>Informasi Profil</x-slot>
-    <x-slot:subtitle>Perbarui informasi profil dan alamat email akun Anda.</x-slot>
-  </x-admin.card.header>
+<div class="space-y-1">
+  <h2 class="text-xl font-semibold text-gray-800 dark:text-neutral-200">
+    Informasi Profil
+  </h2>
+  <p class="text-sm text-gray-600 dark:text-neutral-400">
+    Perbarui informasi profil dan alamat email akun Anda.
+  </p>
+</div>
 
+<x-admin.card>
   <x-admin.card.content>
     <form id="send-verification" method="post" action="{{ route('verification.send') }}">
       @csrf

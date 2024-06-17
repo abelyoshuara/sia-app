@@ -1,4 +1,8 @@
 <x-layouts.app title="Beranda">
+  <h2 class="text-xl font-semibold text-gray-800 dark:text-neutral-200">
+    Beranda
+  </h2>
+
   <!-- Grid -->
   <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
 

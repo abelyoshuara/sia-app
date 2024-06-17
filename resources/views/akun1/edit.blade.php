@@ -1,10 +1,14 @@
 <x-layouts.app title="Akun 1">
-  <x-admin.card>
-    <x-admin.card.header>
-      <x-slot:title>Akun 1</x-slot>
-      <x-slot:subtitle>Edit Akun 1</x-slot>
-    </x-admin.card.header>
+  <div class="space-y-1">
+    <h2 class="text-xl font-semibold text-gray-800 dark:text-neutral-200">
+      Akun 1
+    </h2>
+    <p class="text-sm text-gray-600 dark:text-neutral-400">
+      Form ubah akun1.
+    </p>
+  </div>
 
+  <x-admin.card>
     <x-admin.card.content>
       <form action="{{ route('akun1.update', $akun1->id) }}" method="POST">
         @csrf

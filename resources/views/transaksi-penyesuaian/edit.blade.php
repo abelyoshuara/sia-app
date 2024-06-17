@@ -177,12 +177,16 @@
     </script>
   </x-slot>
 
-  <x-admin.card id="card" data-id="{{ $transaksiPenyesuaian->id }}">
-    <x-admin.card.header>
-      <x-slot:title>Transaksi Penyesuaian</x-slot>
-      <x-slot:subtitle>Ubah Transaksi Penyesuaian</x-slot>
-    </x-admin.card.header>
+  <div class="space-y-1">
+    <h2 class="text-xl font-semibold text-gray-800 dark:text-neutral-200">
+      Transaksi Penyesuaian
+    </h2>
+    <p class="text-sm text-gray-600 dark:text-neutral-400">
+      Form ubah transaksi penyesuaian.
+    </p>
+  </div>
 
+  <x-admin.card id="card" data-id="{{ $transaksiPenyesuaian->id }}">
     <x-admin.card.content class="lg:w-full">
       <form action="{{ route('transaksi-penyesuaian.update', $transaksiPenyesuaian->id) }}" method="POST"
         class="flex flex-wrap -mx-4 gap-y-5 form-transaksi">

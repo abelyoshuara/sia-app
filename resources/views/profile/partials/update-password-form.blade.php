@@ -1,9 +1,13 @@
-<x-admin.card>
-  <x-admin.card.header>
-    <x-slot:title>Perbarui Kata Sandi</x-slot>
-    <x-slot:subtitle>Pastikan akun Anda menggunakan kata sandi yang panjang dan acak agar tetap aman.</x-slot>
-  </x-admin.card.header>
+<div class="space-y-1">
+  <h2 class="text-xl font-semibold text-gray-800 dark:text-neutral-200">
+    Perbarui Kata Sandi
+  </h2>
+  <p class="text-sm text-gray-600 dark:text-neutral-400">
+    Pastikan akun Anda menggunakan kata sandi yang panjang dan acak agar tetap aman.
+  </p>
+</div>
 
+<x-admin.card>
   <x-admin.card.content>
     <form action="{{ route('password.update') }}" method="POST">
       @csrf

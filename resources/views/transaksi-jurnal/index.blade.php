@@ -98,6 +98,15 @@
     </script>
   </x-slot>
 
+  <div class="space-y-1">
+    <h2 class="text-xl font-semibold text-gray-800 dark:text-neutral-200">
+      Transaksi Jurnal
+    </h2>
+    <p class="text-sm text-gray-600 dark:text-neutral-400">
+      Tambah, ubah, dan hapus transaksi jurnal.
+    </p>
+  </div>
+
   <div class="flex flex-col" x-data>
     <div class="-m-1.5 overflow-x-auto">
       <div class="p-1.5 min-w-full inline-block align-middle">

@@ -78,7 +78,7 @@
             class="hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden min-w-60 bg-white shadow-md rounded-lg p-2 dark:bg-neutral-900 dark:border dark:border-neutral-700"
             aria-labelledby="hs-dropdown-with-header">
             <div class="py-3 px-5 -m-2 bg-gray-100 rounded-t-lg dark:bg-neutral-800 space-y-1">
-              <p class="text-sm text-gray-500 dark:text-neutral-400">Masuk sebagai</p>
+              <p class="text-sm text-gray-500 dark:text-neutral-400">Login sebagai</p>
               <p class="text-sm font-medium text-gray-800 dark:text-neutral-300">{{ auth()->user()->email }}</p>
             </div>
             <div class="mt-2 py-2 first:pt-0 last:pb-0 space-y-1">
