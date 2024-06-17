@@ -17,7 +17,7 @@ class Akun3Controller extends Controller
      */
     public function index(): View
     {
-        $akun3s = Akun3::with(['akun1', 'akun2'])->get();
+        $akun3s = Akun3::with(['akun1', 'akun2'])->filter()->paginate(10)->withQueryString();
 
         return view('akun3.index', compact('akun3s'));
     }
