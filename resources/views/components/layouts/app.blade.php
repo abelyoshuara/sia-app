@@ -21,7 +21,7 @@
   {{ $styles ?? '' }}
 </head>
 
-<body class="font-sans antialiased bg-gray-50 dark:bg-neutral-900">
+<body class="font-sans antialiased bg-gray-50 dark:bg-neutral-900 overflow-x-hidden">
   <!-- ========== HEADER ========== -->
   <x-admin.header />
   <!-- ========== END HEADER ========== -->
