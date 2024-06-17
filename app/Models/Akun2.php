@@ -19,7 +19,10 @@ class Akun2 extends Model
     {
         $query->when(request('search'), function ($query, $search) {
             return $query->where('nama', 'like', '%' . $search . '%')
-                ->orWhere('kode', 'like', '%' . $search . '%');
+                ->orWhere('kode', 'like', '%' . $search . '%')
+                ->orWhereHas('akun1', function ($query) use ($search) {
+                    $query->where('nama', 'like', '%' . $search . '%');
+                });
         });
     }
 
