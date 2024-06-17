@@ -19,7 +19,7 @@ class TransaksiJurnalController extends Controller
      */
     public function index(): View
     {
-        $transaksiJurnal = TransaksiJurnal::all();
+        $transaksiJurnal = TransaksiJurnal::filter()->paginate(10)->withQueryString();
 
         return view('transaksi-jurnal.index', compact('transaksiJurnal'));
     }
