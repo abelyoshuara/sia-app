@@ -44,13 +44,13 @@
 
           <div class="flex gap-x-3">
             <div class="flex">
-              <x-admin.forms.radio-input name="role" id="role_regular" value="regular" checked />
+              <x-admin.forms.radio-input name="role" id="role_regular" value="regular" :checked="old('role', 'regular') === 'regular'" />
               <x-admin.forms.input-label for="role_regular" class="text-gray-500 ms-2 dark:text-neutral-400"
                 :value="__('Regular')" />
             </div>
 
             <div class="flex">
-              <x-admin.forms.radio-input name="role" id="role_admin" value="admin" />
+              <x-admin.forms.radio-input name="role" id="role_admin" value="admin" :checked="old('role') === 'admin'" />
               <x-admin.forms.input-label for="role_admin" class="text-gray-500 ms-2 dark:text-neutral-400"
                 :value="__('Admin')" />
             </div>
