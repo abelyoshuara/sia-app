@@ -30,10 +30,10 @@
     <!-- End Logo -->
   </div>
 
-  <nav class="hs-accordion-group p-6 w-full flex flex-col flex-wrap" data-hs-accordion-always-open>
+  <nav class="hs-accordion-group p-6 w-full flex flex-col flex-wrap">
     <ul class="space-y-1.5">
       <li>
-        <x-admin.sidebar.link href="{{ route('dashboard') }}">
+        <x-admin.sidebar.link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
           <svg class="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
             viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
             stroke-linejoin="round">
@@ -46,7 +46,7 @@
 
       @if (auth()->user()->hasRole('admin'))
         <li>
-          <x-admin.sidebar.link href="{{ route('users.index') }}">
+          <x-admin.sidebar.link href="{{ route('users.index') }}" :active="request()->routeIs('users.*')">
             <svg class="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
               viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
               stroke-linejoin="round" class="lucide lucide-users">
@@ -84,17 +84,17 @@
           class="hs-accordion-content w-full overflow-hidden transition-[height] duration-300 hidden">
           <ul class="pt-2 ps-2 space-y-1">
             <li>
-              <x-admin.sidebar.link href="{{ route('akun1.index') }}">
+              <x-admin.sidebar.link href="{{ route('akun1.index') }}" :active="request()->routeIs('akun1.*')">
                 Akun 1
               </x-admin.sidebar.link>
             </li>
             <li>
-              <x-admin.sidebar.link href="{{ route('akun2.index') }}">
+              <x-admin.sidebar.link href="{{ route('akun2.index') }}" :active="request()->routeIs('akun2.*')">
                 Akun 2
               </x-admin.sidebar.link>
             </li>
             <li>
-              <x-admin.sidebar.link href="{{ route('akun3.index') }}">
+              <x-admin.sidebar.link href="{{ route('akun3.index') }}" :active="request()->routeIs('akun3.*')">
                 Akun 3
               </x-admin.sidebar.link>
             </li>
@@ -122,12 +122,12 @@
           class="hs-accordion-content w-full overflow-hidden transition-[height] duration-300 hidden">
           <ul class="pt-2 ps-2 space-y-1">
             <li>
-              <x-admin.sidebar.link href="{{ route('transaksi-jurnal.index') }}">
+              <x-admin.sidebar.link href="{{ route('transaksi-jurnal.index') }}" :active="request()->routeIs('transaksi-jurnal.*')">
                 Transaksi Jurnal
               </x-admin.sidebar.link>
             </li>
             <li>
-              <x-admin.sidebar.link href="/transaksi-penyesuaian">
+              <x-admin.sidebar.link href="{{ route('transaksi-penyesuaian.index') }}" :active="request()->routeIs('transaksi-penyesuaian.*')">
                 Transaksi Penyesuaian
               </x-admin.sidebar.link>
             </li>
@@ -136,7 +136,7 @@
       </li>
 
       <li>
-        <x-admin.sidebar.link href="{{ route('jurnal-umum.index') }}">
+        <x-admin.sidebar.link href="{{ route('jurnal-umum.index') }}" :active="request()->routeIs('jurnal-umum.*')">
           <svg class="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
             viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
             stroke-linejoin="round">
