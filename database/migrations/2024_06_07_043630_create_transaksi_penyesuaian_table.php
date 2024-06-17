@@ -15,9 +15,9 @@ return new class extends Migration
             $table->id();
             $table->date('tanggal');
             $table->text('deskripsi');
-            $table->float('nilai');
+            $table->integer('nilai');
             $table->integer('waktu');
-            $table->float('jumlah');
+            $table->integer('jumlah');
             $table->timestamps();
             $table->softDeletes();
         });
