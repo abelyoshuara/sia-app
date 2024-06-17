@@ -1,4 +1,4 @@
-@props(['action' => '', 'name' => 'search', 'placeholder' => 'Search...'])
+@props(['action' => '', 'name' => 'search', 'placeholder' => 'Cari...'])
 
 <form action="{{ $action }}" class="sm:col-span-1">
   <label for="search" class="sr-only">Search</label>

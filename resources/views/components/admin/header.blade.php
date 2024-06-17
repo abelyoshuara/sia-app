@@ -78,7 +78,7 @@
             class="hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden min-w-60 bg-white shadow-md rounded-lg p-2 dark:bg-neutral-900 dark:border dark:border-neutral-700"
             aria-labelledby="hs-dropdown-with-header">
             <div class="py-3 px-5 -m-2 bg-gray-100 rounded-t-lg dark:bg-neutral-800 space-y-1">
-              <p class="text-sm text-gray-500 dark:text-neutral-400">Signed in as</p>
+              <p class="text-sm text-gray-500 dark:text-neutral-400">Masuk sebagai</p>
               <p class="text-sm font-medium text-gray-800 dark:text-neutral-300">{{ auth()->user()->email }}</p>
             </div>
             <div class="mt-2 py-2 first:pt-0 last:pb-0 space-y-1">
@@ -92,7 +92,7 @@
                   <path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0" />
                   <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
                 </svg>
-                {{ __('Profile') }}
+                {{ __('Profil') }}
               </a>
 
               <!-- Authentication -->
@@ -109,7 +109,7 @@
                     <path d="M9 12h12l-3 -3" />
                     <path d="M18 15l3 -3" />
                   </svg>
-                  {{ __('Log Out') }}
+                  {{ __('Keluar') }}
                 </a>
               </form>
 

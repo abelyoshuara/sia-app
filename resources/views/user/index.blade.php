@@ -28,7 +28,7 @@
                 <x-admin.table.th class="px-6 text-start whitespace-nowrap">
                   <div class="flex items-center gap-x-2">
                     <span class="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-neutral-200">
-                      Name
+                      Nama
                     </span>
                   </div>
                 </x-admin.table.th>

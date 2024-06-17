@@ -84,13 +84,13 @@
                     <div class="inline-flex">
                       <x-admin.button as="a" href="{{ route('akun2.edit', $akun2->id) }}" variant="link"
                         size="sm">
-                        Edit
+                        Ubah
                       </x-admin.button>
                       <form action="{{ route('akun2.destroy', $akun2->id) }}" method="post">
                         @csrf
                         @method('DELETE')
                         <x-admin.button type="submit" variant="link" size="sm">
-                          Delete
+                          Hapus
                         </x-admin.button>
                       </form>
                     </div>

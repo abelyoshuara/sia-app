@@ -40,7 +40,7 @@
           </div>
 
           <div class="flex gap-x-2 pt-4">
-            <x-admin.button type="submit">Ubah</x-admin.button>
+            <x-admin.button type="submit">Simpan</x-admin.button>
             <x-admin.button as="a" href="{{ route('users.index') }}" variant="white"
               color="dark">Kembali</x-admin.button>
           </div>

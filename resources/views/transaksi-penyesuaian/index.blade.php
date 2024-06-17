@@ -82,9 +82,9 @@
 
           document.querySelector('#tanggal').textContent = moment(tanggal).format('DD MMM YYYY');
           document.querySelector('#deskripsi').textContent = deskripsi;
-          document.querySelector('#nilai').textContent = nilai;
+          document.querySelector('#nilai').textContent = rupiah(nilai);
           document.querySelector('#waktu').textContent = waktu;
-          document.querySelector('#jumlah').textContent = jumlah;
+          document.querySelector('#jumlah').textContent = rupiah(jumlah);
 
           renderTableNilaiTransaksiPenyesuaian(nilai_penyesuaian);
         } catch (error) {
@@ -182,7 +182,8 @@
 
                   <x-admin.table.td class="h-px w-72">
                     <div class="px-6 py-3">
-                      <span class="text-sm text-gray-500 dark:text-neutral-500">{{ $item->deskripsi }}</span>
+                      <span
+                        class="text-sm text-gray-500 dark:text-neutral-500">{{ Str::limit($item->deskripsi, 130) }}</span>
                     </div>
                   </x-admin.table.td>
 
@@ -404,7 +405,7 @@
           <button type="button"
             class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-white dark:hover:bg-neutral-800"
             data-hs-overlay="#detail-modal">
-            Close
+            Tutup
           </button>
         </div>
       </div>
