@@ -1,5 +1,5 @@
 <x-layouts.app title="Akun 2">
-  <div class="flex flex-col">
+  <div class="flex flex-col" x-data>
     <div class="-m-1.5 overflow-x-auto">
       <div class="p-1.5 min-w-full inline-block align-middle">
         <x-admin.card class="overflow-hidden">
@@ -86,13 +86,10 @@
                         size="sm">
                         Ubah
                       </x-admin.button>
-                      <form action="{{ route('akun2.destroy', $akun2->id) }}" method="post">
-                        @csrf
-                        @method('DELETE')
-                        <x-admin.button type="submit" variant="link" size="sm">
-                          Hapus
-                        </x-admin.button>
-                      </form>
+                      <x-admin.button variant="link" size="sm" data-hs-overlay="#confirm-deletion"
+                        @click="$dispatch('set-id', { id: {{ $akun2->id }} })">
+                        Hapus
+                      </x-admin.button>
                     </div>
                   </x-admin.table.td>
                 </tr>
@@ -113,4 +110,25 @@
       </div>
     </div>
   </div>
+
+  <x-admin.modal id="confirm-deletion" x-data="{ id: null }" @set-id.window="id = $event.detail.id">
+    <x-admin.modal.header dismiss="#confirm-deletion">Hapus Konfirmasi</x-admin.modal.header>
+
+    <x-admin.modal.body>
+      <p class="text-gray-800 dark:text-neutral-400">Apakah anda yakin data ingin dihapus?</p>
+    </x-admin.modal.body>
+
+    <x-admin.modal.footer>
+      <x-admin.button variant="white" color="dark" size="sm" data-hs-overlay="#confirm-deletion">
+        Tutup
+      </x-admin.button>
+      <form :action="`{{ route('akun2.destroy', '') }}/${id}`" method="post">
+        @csrf
+        @method('DELETE')
+        <x-admin.button type="submit" variant="solid" color="red" size="sm">
+          Hapus
+        </x-admin.button>
+      </form>
+    </x-admin.modal.footer>
+  </x-admin.modal>
 </x-layouts.app>
