@@ -23,7 +23,7 @@ class Akun2Seeder extends Seeder
             ],
             [
                 'kode' => 12,
-                'nama' => 'Activa Tetap',
+                'nama' => 'Aktiva Tetap',
                 'akun1_kode' => 1,
                 'created_at' => now(),
                 'updated_at' => now(),
