@@ -37,10 +37,10 @@
             <x-admin.forms.input-error class="hidden hs-error:block" :message="$errors->first('akun1_kode')" />
           </div>
 
-          <div class="flex justify-end gap-x-2 pt-1">
+          <div class="space-x-2 pt-1">
+            <x-admin.button type="submit">Simpan</x-admin.button>
             <x-admin.button as="a" href="{{ route('akun2.index') }}" variant="white"
-              color="dark">Cancel</x-admin.button>
-            <x-admin.button type="submit">Update</x-admin.button>
+              color="dark">Kembali</x-admin.button>
           </div>
 
         </div>
