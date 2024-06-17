@@ -15,7 +15,7 @@ class Akun2Controller extends Controller
      */
     public function index(): View
     {
-        $akun2s = Akun2::with('akun1')->get();
+        $akun2s = Akun2::with('akun1')->filter()->paginate(10)->withQueryString();
 
         return view('akun2.index', compact('akun2s'));
     }
