@@ -26,12 +26,12 @@
 
           <div class="space-y-2 @error('akun1_kode') error @enderror">
             <x-admin.forms.input-label for="akun1_kode" :value="__('Nama Akun 1')" />
-            <x-admin.forms.advanced-select id="akun1_kode" name="akun1_kode">
+            <x-admin.advanced-forms.advanced-select id="akun1_kode" name="akun1_kode">
               <option value="">Choose</option>
               @foreach ($akun1s as $akun1)
                 <option value="{{ $akun1->kode }}" @selected(old('akun1_kode') == $akun1->kode)>{{ $akun1->nama }}</option>
               @endforeach
-            </x-admin.forms.advanced-select>
+            </x-admin.advanced-forms.advanced-select>
             <x-admin.forms.input-error class="hidden hs-error:block" :message="$errors->first('akun1_kode')" />
           </div>
 
