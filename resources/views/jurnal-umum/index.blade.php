@@ -1,4 +1,13 @@
 <x-layouts.app title="Jurnal Umum">
+  <div class="space-y-1">
+    <h2 class="text-xl font-semibold text-gray-800 dark:text-neutral-200">
+      Jurnal Umum
+    </h2>
+    <p class="text-sm text-gray-600 dark:text-neutral-400">
+      Expor jurnal umum ke PDF.
+    </p>
+  </div>
+
   <div class="flex flex-col">
     <div class="-m-1.5 overflow-x-auto">
       <div class="p-1.5 min-w-full inline-block align-middle">
@@ -13,8 +22,8 @@
               </form>
             </x-slot>
             <x-slot:actions>
-              <x-admin.button as="a" href="/export/jurnal-umum" variant="white" size="sm" color="dark">
-                Export
+              <x-admin.button as="a" href="/export" variant="white" size="sm" color="dark">
+                Expor
               </x-admin.button>
             </x-slot>
           </x-admin.card.header>
