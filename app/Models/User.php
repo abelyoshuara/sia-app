@@ -6,6 +6,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Builder;
 
 class User extends Authenticatable
 {
@@ -61,5 +62,14 @@ class User extends Authenticatable
         $roleArray = explode(',', $role);
         $roleArray = array_map('trim', $roleArray);
         return in_array($this->role, $roleArray);
+    }
+
+    public function scopeFilter(Builder $query): void
+    {
+        $query->when(request('search'), function ($query, $search) {
+            return $query->where('name', 'like', '%' . $search . '%')
+                ->orWhere('email', 'like', '%' . $search . '%')
+                ->orWhere('role', 'like', '%' . $search . '%');
+        });
     }
 }
