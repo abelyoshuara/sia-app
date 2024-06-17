@@ -27,7 +27,9 @@ class DatabaseSeeder extends Seeder
             Akun3Seeder::class,
             StatusSeeder::class,
             TransaksiJurnalSeeder::class,
+            NilaiJurnalSeeder::class,
             TransaksiPenyesuaianSeeder::class,
+            NilaiPenyesuaianSeeder::class,
         ]);
     }
 }
