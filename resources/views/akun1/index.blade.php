@@ -8,7 +8,7 @@
               <x-admin.card.search />
             </x-slot>
             <x-slot:actions>
-              <x-admin.button as="a" href="{{ route('akun1.create') }}" size="sm">Buat Akun 1</x-admin.button>
+              <x-admin.button as="a" href="{{ route('akun1.create') }}" size="sm">Tambah</x-admin.button>
             </x-slot>
           </x-admin.card.header>
 
