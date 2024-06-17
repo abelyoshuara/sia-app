@@ -15,7 +15,7 @@ class Akun1Controller extends Controller
      */
     public function index(): View
     {
-        $akun1s = Akun1::all();
+        $akun1s = Akun1::filter()->paginate(10)->withQueryString();
 
         return view('akun1.index', compact('akun1s'));
     }
