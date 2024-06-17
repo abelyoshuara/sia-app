@@ -74,6 +74,16 @@
     else if (isLightOrAuto && !html.classList.contains('light')) html.classList.add('light');
   </script>
 
+  <script>
+    const rupiah = (value) => {
+      return Intl.NumberFormat('id', {
+        style: 'currency',
+        currency: 'IDR',
+        maximumFractionDigits: 0
+      }).format(value);
+    }
+  </script>
+
   {{ $scripts ?? '' }}
 </body>
 
