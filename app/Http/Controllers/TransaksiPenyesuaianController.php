@@ -19,7 +19,7 @@ class TransaksiPenyesuaianController extends Controller
      */
     public function index(): View
     {
-        $transaksiPenyesuaian = TransaksiPenyesuaian::all();
+        $transaksiPenyesuaian = TransaksiPenyesuaian::filter()->paginate(10)->withQueryString();
 
         return view('transaksi-penyesuaian.index', compact('transaksiPenyesuaian'));
     }
