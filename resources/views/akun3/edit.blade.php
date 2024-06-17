@@ -37,8 +37,8 @@
               @foreach ($akun1s as $akun1)
                 <option value="{{ $akun1->kode }}" @selected(old('akun1_kode', $akun3->akun1_kode) == $akun1->kode)>{{ $akun1->nama }}</option>
               @endforeach
-              </x-admin.advanced-forms.advanced-select>
-              <x-forms.input-error class="hidden hs-error:block" :message="$errors->first('akun1_kode')" />
+            </x-advanced-forms.advanced-select>
+            <x-forms.input-error class="hidden hs-error:block" :message="$errors->first('akun1_kode')" />
           </div>
 
           <div class="space-y-2 @error('akun2_kode') error @enderror">
@@ -48,18 +48,17 @@
               @foreach ($akun2s as $akun2)
                 <option value="{{ $akun2->kode }}" @selected(old('akun2_kode', $akun3->akun2_kode) == $akun2->kode)>{{ $akun2->nama }}</option>
               @endforeach
-              </x-admin.advanced-forms.advanced-select>
-              <x-forms.input-error class="hidden hs-error:block" :message="$errors->first('akun2_kode')" />
+            </x-advanced-forms.advanced-select>
+            <x-forms.input-error class="hidden hs-error:block" :message="$errors->first('akun2_kode')" />
           </div>
 
           <div class="space-x-2 pt-1">
-            <x-button type="submit">Simpan</x-admin.button>
-              <x-button as="a" href="{{ route('akun3.index') }}" variant="white"
-                color="dark">Kembali</x-admin.button>
+            <x-button type="submit">Simpan</x-button>
+            <x-button as="a" href="{{ route('akun3.index') }}" variant="white" color="dark">Kembali</x-button>
           </div>
 
         </div>
       </form>
-      </x-admin.card.content>
-      </x-admin.card>
+    </x-card.content>
+  </x-card>
 </x-layouts.app>

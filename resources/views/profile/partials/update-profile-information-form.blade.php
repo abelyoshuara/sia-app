@@ -51,16 +51,16 @@
         </div>
 
         <div class="flex items-center gap-x-4 pt-4">
-          <x-button type="submit">Simpan</x-admin.button>
+          <x-button type="submit">Simpan</x-button>
 
-            @if (session('status') === 'profile-updated')
-              <p x-data="{ show: true }" x-show="show" x-transition x-init="setTimeout(() => show = false, 3000)"
-                class="text-sm text-green-600 dark:text-green-400">{{ __('Informasi profil berhasil diperbarui.') }}
-              </p>
-            @endif
+          @if (session('status') === 'profile-updated')
+            <p x-data="{ show: true }" x-show="show" x-transition x-init="setTimeout(() => show = false, 3000)"
+              class="text-sm text-green-600 dark:text-green-400">{{ __('Informasi profil berhasil diperbarui.') }}
+            </p>
+          @endif
         </div>
 
       </div>
     </form>
-    </x-admin.card.content>
-    </x-admin.card>
+  </x-card.content>
+</x-card>

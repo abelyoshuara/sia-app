@@ -41,7 +41,7 @@
             <polyline points="9 22 9 12 15 12 15 22" />
           </svg>
           Beranda
-          </x-admin.sidebar.link>
+        </x-sidebar.link>
       </li>
 
       @if (auth()->user()->hasRole('admin'))
@@ -56,7 +56,7 @@
               <path d="M16 3.13a4 4 0 0 1 0 7.75" />
             </svg>
             Pengguna
-            </x-admin.sidebar.link>
+          </x-sidebar.link>
         </li>
       @endif
 
@@ -78,28 +78,28 @@
             <path d="m20.7 13.8 1-.4" />
           </svg>
           Kode Akun
-          </x-admin.sidebar.dropdown-item>
+        </x-sidebar.dropdown-item>
 
-          <div id="projects-accordion-child"
-            class="hs-accordion-content w-full overflow-hidden transition-[height] duration-300 hidden">
-            <ul class="pt-2 ps-2 space-y-1">
-              <li>
-                <x-sidebar.link href="{{ route('akun1.index') }}" :active="request()->routeIs('akun1.*')">
-                  Akun 1
-                  </x-admin.sidebar.link>
-              </li>
-              <li>
-                <x-sidebar.link href="{{ route('akun2.index') }}" :active="request()->routeIs('akun2.*')">
-                  Akun 2
-                  </x-admin.sidebar.link>
-              </li>
-              <li>
-                <x-sidebar.link href="{{ route('akun3.index') }}" :active="request()->routeIs('akun3.*')">
-                  Akun 3
-                  </x-admin.sidebar.link>
-              </li>
-            </ul>
-          </div>
+        <div id="projects-accordion-child"
+          class="hs-accordion-content w-full overflow-hidden transition-[height] duration-300 hidden">
+          <ul class="pt-2 ps-2 space-y-1">
+            <li>
+              <x-sidebar.link href="{{ route('akun1.index') }}" :active="request()->routeIs('akun1.*')">
+                Akun 1
+              </x-sidebar.link>
+            </li>
+            <li>
+              <x-sidebar.link href="{{ route('akun2.index') }}" :active="request()->routeIs('akun2.*')">
+                Akun 2
+              </x-sidebar.link>
+            </li>
+            <li>
+              <x-sidebar.link href="{{ route('akun3.index') }}" :active="request()->routeIs('akun3.*')">
+                Akun 3
+              </x-sidebar.link>
+            </li>
+          </ul>
+        </div>
       </li>
 
       <li class="hs-accordion" id="account-accordion">
@@ -116,23 +116,23 @@
             <path d="M11 15h2" />
           </svg>
           Transaksi
-          </x-admin.sidebar.dropdown-item>
+        </x-sidebar.dropdown-item>
 
-          <div id="account-accordion-child"
-            class="hs-accordion-content w-full overflow-hidden transition-[height] duration-300 hidden">
-            <ul class="pt-2 ps-2 space-y-1">
-              <li>
-                <x-sidebar.link href="{{ route('transaksi-jurnal.index') }}" :active="request()->routeIs('transaksi-jurnal.*')">
-                  Transaksi Jurnal
-                  </x-admin.sidebar.link>
-              </li>
-              <li>
-                <x-sidebar.link href="{{ route('transaksi-penyesuaian.index') }}" :active="request()->routeIs('transaksi-penyesuaian.*')">
-                  Transaksi Penyesuaian
-                  </x-admin.sidebar.link>
-              </li>
-            </ul>
-          </div>
+        <div id="account-accordion-child"
+          class="hs-accordion-content w-full overflow-hidden transition-[height] duration-300 hidden">
+          <ul class="pt-2 ps-2 space-y-1">
+            <li>
+              <x-sidebar.link href="{{ route('transaksi-jurnal.index') }}" :active="request()->routeIs('transaksi-jurnal.*')">
+                Transaksi Jurnal
+              </x-sidebar.link>
+            </li>
+            <li>
+              <x-sidebar.link href="{{ route('transaksi-penyesuaian.index') }}" :active="request()->routeIs('transaksi-penyesuaian.*')">
+                Transaksi Penyesuaian
+              </x-sidebar.link>
+            </li>
+          </ul>
+        </div>
       </li>
 
       <li>
@@ -152,7 +152,7 @@
             <path d="M16 18h.01" />
           </svg>
           Jurnal Umum
-          </x-admin.sidebar.link>
+        </x-sidebar.link>
       </li>
 
       <li>
@@ -164,7 +164,7 @@
             <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
           </svg>
           Posting
-          </x-admin.sidebar.link>
+        </x-sidebar.link>
       </li>
 
       <li>
@@ -179,7 +179,7 @@
             <path d="M18 13v9" />
           </svg>
           Naraca Saldo
-          </x-admin.sidebar.link>
+        </x-sidebar.link>
       </li>
 
       <li>
@@ -194,7 +194,7 @@
             <path d="M18 22v-9" />
           </svg>
           Naraca Lajur
-          </x-admin.sidebar.link>
+        </x-sidebar.link>
       </li>
 
       <li class="hs-accordion" id="projects-accordion">

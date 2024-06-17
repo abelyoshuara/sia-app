@@ -44,13 +44,12 @@
           </div>
 
           <div class="flex gap-x-2 pt-4">
-            <x-button type="submit">Simpan</x-admin.button>
-              <x-button as="a" href="{{ route('users.index') }}" variant="white"
-                color="dark">Kembali</x-admin.button>
+            <x-button type="submit">Simpan</x-button>
+            <x-button as="a" href="{{ route('users.index') }}" variant="white" color="dark">Kembali</x-button>
           </div>
 
         </div>
       </form>
-      </x-admin.card.content>
-      </x-admin.card>
+    </x-card.content>
+  </x-card>
 </x-layouts.app>

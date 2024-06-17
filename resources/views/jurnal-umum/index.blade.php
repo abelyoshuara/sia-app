@@ -18,113 +18,110 @@
               <form class="flex gap-x-2 items-end">
                 <x-forms.text-input type="date" id="start_date" name="start_date" :value="request('start_date')" required />
                 <x-forms.text-input type="date" id="end_date" name="end_date" :value="request('end_date')" required />
-                <x-button type="submit">Filter</x-admin.button>
+                <x-button type="submit">Filter</x-button>
               </form>
             </x-slot>
             <x-slot:actions>
               <x-button as="a" href="/export" variant="white" size="sm" color="dark">
                 Expor
-                </x-admin.button>
+              </x-button>
             </x-slot>
-            </x-admin.card.header>
+          </x-card.header>
 
-            <x-table id="table-jurnal-umum">
-              <x-table.thead>
+          <x-table id="table-jurnal-umum">
+            <x-table.thead>
+              <tr>
+                <x-table.th class="ps-6 text-start whitespace-nowrap">
+                  <div class="flex items-center gap-x-2">
+                    <span class="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-neutral-200">
+                      Tanggal
+                    </span>
+                  </div>
+                </x-table.th>
+
+                <x-table.th class="px-6 text-start whitespace-nowrap">
+                  <div class="flex items-center gap-x-2">
+                    <span class="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-neutral-200">
+                      Keterangan
+                    </span>
+                  </div>
+                </x-table.th>
+
+                <x-table.th class="px-6 text-start whitespace-nowrap">
+                  <div class="flex items-center gap-x-2">
+                    <span class="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-neutral-200">
+                      Ref
+                    </span>
+                  </div>
+                </x-table.th>
+
+                <x-table.th class="px-6 text-start whitespace-nowrap">
+                  <div class="flex items-center gap-x-2">
+                    <span class="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-neutral-200">
+                      Debit
+                    </span>
+                  </div>
+                </x-table.th>
+
+                <x-table.th class="px-6 text-start whitespace-nowrap">
+                  <div class="flex items-center gap-x-2">
+                    <span class="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-neutral-200">
+                      Kredit
+                    </span>
+                  </div>
+                </x-table.th>
+              </tr>
+            </x-table.thead>
+
+            <x-table.tbody>
+              @forelse ($jurnalUmum as $item)
                 <tr>
-                  <x-table.th class="ps-6 text-start whitespace-nowrap">
-                    <div class="flex items-center gap-x-2">
-                      <span class="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-neutral-200">
-                        Tanggal
-                      </span>
+                  <x-table.td>
+                    <div class="px-6 py-3">
+                      <span
+                        class="text-sm font-semibold text-gray-800 dark:text-neutral-200">{{ $item->tanggal }}</span>
                     </div>
-                    </x-admin.table.th>
+                  </x-table.td>
 
-                    <x-table.th class="px-6 text-start whitespace-nowrap">
-                      <div class="flex items-center gap-x-2">
-                        <span class="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-neutral-200">
-                          Keterangan
-                        </span>
-                      </div>
-                      </x-admin.table.th>
+                  <x-table.td class="h-px w-72">
+                    <div class="px-6 py-3">
+                      <span class="text-sm text-gray-500 dark:text-neutral-500">{{ 'keterangan' }}</span>
+                    </div>
+                  </x-table.td>
 
-                      <x-table.th class="px-6 text-start whitespace-nowrap">
-                        <div class="flex items-center gap-x-2">
-                          <span
-                            class="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-neutral-200">
-                            Ref
-                          </span>
-                        </div>
-                        </x-admin.table.th>
+                  <x-table.td class="h-px w-72">
+                    <div class="px-6 py-3">
+                      <span class="text-sm text-gray-500 dark:text-neutral-500">{{ 'ref' }}</span>
+                    </div>
+                  </x-table.td>
 
-                        <x-table.th class="px-6 text-start whitespace-nowrap">
-                          <div class="flex items-center gap-x-2">
-                            <span
-                              class="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-neutral-200">
-                              Debit
-                            </span>
-                          </div>
-                          </x-admin.table.th>
+                  <x-table.td>
+                    <div class="px-6 py-3">
+                      <span class="text-sm text-gray-500 dark:text-neutral-500">{{ 'debit' }}</span>
+                    </div>
+                  </x-table.td>
 
-                          <x-table.th class="px-6 text-start whitespace-nowrap">
-                            <div class="flex items-center gap-x-2">
-                              <span
-                                class="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-neutral-200">
-                                Kredit
-                              </span>
-                            </div>
-                            </x-admin.table.th>
+                  <x-table.td>
+                    <div class="px-6 py-3">
+                      <span class="text-sm text-gray-500 dark:text-neutral-500">{{ 'kredit' }}</span>
+                    </div>
+                  </x-table.td>
                 </tr>
-                </x-admin.table.thead>
+              @empty
+                <tr>
+                  <x-table.td colspan="6">
+                    <div class="px-6 py-3 text-center">
+                      <span class="text-sm font-semibold text-red-500">Data belum tersedia!</span>
+                    </div>
+                  </x-table.td>
+                </tr>
+              @endforelse
+            </x-table.tbody>
+          </x-table>
 
-                <x-table.tbody>
-                  @forelse ($jurnalUmum as $item)
-                    <tr>
-                      <x-table.td>
-                        <div class="px-6 py-3">
-                          <span
-                            class="text-sm font-semibold text-gray-800 dark:text-neutral-200">{{ $item->tanggal }}</span>
-                        </div>
-                        </x-admin.table.td>
+          <x-card.footer>{{ $jurnalUmum->links() }}</x-card.footer>
 
-                        <x-table.td class="h-px w-72">
-                          <div class="px-6 py-3">
-                            <span class="text-sm text-gray-500 dark:text-neutral-500">{{ 'keterangan' }}</span>
-                          </div>
-                          </x-admin.table.td>
-
-                          <x-table.td class="h-px w-72">
-                            <div class="px-6 py-3">
-                              <span class="text-sm text-gray-500 dark:text-neutral-500">{{ 'ref' }}</span>
-                            </div>
-                            </x-admin.table.td>
-
-                            <x-table.td>
-                              <div class="px-6 py-3">
-                                <span class="text-sm text-gray-500 dark:text-neutral-500">{{ 'debit' }}</span>
-                              </div>
-                              </x-admin.table.td>
-
-                              <x-table.td>
-                                <div class="px-6 py-3">
-                                  <span class="text-sm text-gray-500 dark:text-neutral-500">{{ 'kredit' }}</span>
-                                </div>
-                                </x-admin.table.td>
-                    </tr>
-                  @empty
-                    <tr>
-                      <x-table.td colspan="6">
-                        <div class="px-6 py-3 text-center">
-                          <span class="text-sm font-semibold text-red-500">Data belum tersedia!</span>
-                        </div>
-                        </x-admin.table.td>
-                    </tr>
-                  @endforelse
-                  </x-admin.table.tbody>
-                  </x-admin.table>
-
-                  <x-card.footer>{{ $jurnalUmum->links() }}</x-admin.card.footer>
-
-                    </x-admin.card>
+        </x-card>
       </div>
     </div>
   </div>

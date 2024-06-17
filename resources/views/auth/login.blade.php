@@ -45,7 +45,7 @@
             </div>
             <!-- End Checkbox -->
 
-            <x-button type="submit" class="justify-center">Login</x-admin.button>
+            <x-button type="submit" class="justify-center">Login</x-button>
           </div>
         </form>
         <!-- End Form -->
