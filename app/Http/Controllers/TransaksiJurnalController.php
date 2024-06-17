@@ -60,7 +60,7 @@ class TransaksiJurnalController extends Controller
 
         return response()->json([
             'status' => 'success',
-            'message' => 'Data saved successfully',
+            'message' => 'Data berhasil disimpan.',
         ]);
     }
 
@@ -117,7 +117,7 @@ class TransaksiJurnalController extends Controller
 
         return response()->json([
             'status' => 'success',
-            'message' => 'Data updated successfully',
+            'message' => 'Data berhasil disimpan.',
         ]);
     }
 
@@ -128,6 +128,6 @@ class TransaksiJurnalController extends Controller
     {
         $transaksiJurnal->delete();
 
-        return back()->with('success', 'Data deleted successfully.');
+        return back()->with('success', 'Data berhasil dihapus.');
     }
 }

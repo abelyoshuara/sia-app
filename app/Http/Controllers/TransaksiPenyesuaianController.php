@@ -60,7 +60,7 @@ class TransaksiPenyesuaianController extends Controller
 
         return response()->json([
             'status' => 'success',
-            'message' => 'Data saved successfully',
+            'message' => 'Data berhasil disimpan.',
         ]);
     }
 
@@ -117,7 +117,7 @@ class TransaksiPenyesuaianController extends Controller
 
         return response()->json([
             'status' => 'success',
-            'message' => 'Data updated successfully',
+            'message' => 'Data berhasil disimpan.',
         ]);
     }
 
@@ -128,6 +128,6 @@ class TransaksiPenyesuaianController extends Controller
     {
         $transaksiPenyesuaian->delete();
 
-        return back()->with('success', 'Data deleted successfully.');
+        return back()->with('success', 'Data berhasil dihapus.');
     }
 }

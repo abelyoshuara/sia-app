@@ -37,7 +37,7 @@ class UserController extends Controller
     {
         User::create($request->validated());
 
-        return to_route('users.index')->with('success', 'User created successfully.');
+        return to_route('users.index')->with('success', 'Data berhasil disimpan.');
     }
 
     /**
@@ -63,7 +63,7 @@ class UserController extends Controller
     {
         $user->update($request->validated());
 
-        return to_route('users.index')->with('success', 'User updated successfully.');
+        return to_route('users.index')->with('success', 'Data berhasil disimpan.');
     }
 
     /**
@@ -75,6 +75,6 @@ class UserController extends Controller
 
         $user->delete();
 
-        return back()->with('success', 'User deleted successfully.');
+        return back()->with('success', 'Data berhasil dihapus.');
     }
 }

@@ -35,7 +35,7 @@ class Akun1Controller extends Controller
     {
         Akun1::create($request->validated());
 
-        return to_route('akun1.index')->with('success', 'Akun 1 created successfully.');
+        return to_route('akun1.index')->with('success', 'Data berhasil disimpan.');
     }
 
     /**
@@ -61,7 +61,7 @@ class Akun1Controller extends Controller
     {
         $akun1->update($request->validated());
 
-        return to_route('akun1.index')->with('success', 'Akun 1 updated successfully.');
+        return to_route('akun1.index')->with('success', 'Data berhasil disimpan.');
     }
 
     /**
@@ -71,6 +71,6 @@ class Akun1Controller extends Controller
     {
         $akun1->delete();
 
-        return to_route('akun1.index')->with('success', 'Akun 1 deleted successfully.');
+        return to_route('akun1.index')->with('success', 'Data berhasil dihapus.');
     }
 }
