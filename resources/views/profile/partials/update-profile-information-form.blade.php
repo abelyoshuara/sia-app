@@ -7,8 +7,8 @@
   </p>
 </div>
 
-<x-admin.card>
-  <x-admin.card.content>
+<x-card>
+  <x-card.content>
     <form id="send-verification" method="post" action="{{ route('verification.send') }}">
       @csrf
     </form>
@@ -19,17 +19,16 @@
 
       <div class="space-y-3">
         <div class="space-y-2">
-          <x-admin.forms.input-label for="name" :value="__('Nama')" />
-          <x-admin.forms.text-input id="name" name="name" :value="old('name', $user->name)" autofocus autocomplete="name"
+          <x-forms.input-label for="name" :value="__('Nama')" />
+          <x-forms.text-input id="name" name="name" :value="old('name', $user->name)" autofocus autocomplete="name"
             :error="$errors->first('name')" />
-          <x-admin.forms.input-error :message="$errors->first('name')" />
+          <x-forms.input-error :message="$errors->first('name')" />
         </div>
 
         <div class="space-y-2">
-          <x-admin.forms.input-label for="email" :value="__('Email')" />
-          <x-admin.forms.text-input id="email" name="email" :value="old('email', $user->email)" autocomplete="email"
-            :error="$errors->first('email')" />
-          <x-admin.forms.input-error :message="$errors->first('email')" />
+          <x-forms.input-label for="email" :value="__('Email')" />
+          <x-forms.text-input id="email" name="email" :value="old('email', $user->email)" autocomplete="email" :error="$errors->first('email')" />
+          <x-forms.input-error :message="$errors->first('email')" />
 
           @if ($user instanceof \Illuminate\Contracts\Auth\MustVerifyEmail && !$user->hasVerifiedEmail())
             <div>
@@ -52,16 +51,16 @@
         </div>
 
         <div class="flex items-center gap-x-4 pt-4">
-          <x-admin.button type="submit">Simpan</x-admin.button>
+          <x-button type="submit">Simpan</x-admin.button>
 
-          @if (session('status') === 'profile-updated')
-            <p x-data="{ show: true }" x-show="show" x-transition x-init="setTimeout(() => show = false, 3000)"
-              class="text-sm text-green-600 dark:text-green-400">{{ __('Informasi profil berhasil diperbarui.') }}
-            </p>
-          @endif
+            @if (session('status') === 'profile-updated')
+              <p x-data="{ show: true }" x-show="show" x-transition x-init="setTimeout(() => show = false, 3000)"
+                class="text-sm text-green-600 dark:text-green-400">{{ __('Informasi profil berhasil diperbarui.') }}
+              </p>
+            @endif
         </div>
 
       </div>
     </form>
-  </x-admin.card.content>
-</x-admin.card>
+    </x-admin.card.content>
+    </x-admin.card>

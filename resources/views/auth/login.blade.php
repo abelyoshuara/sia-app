@@ -18,34 +18,34 @@
 
             <!-- Form Group -->
             <div class="space-y-2">
-              <x-admin.forms.input-label for="email" :value="__('Email address')" />
-              <x-admin.forms.text-input class="dark:bg-neutral-900" id="email" name="email" :value="old('email')"
-                placeholder="Enter email address" :error="$errors->first('email')" />
-              <x-admin.forms.input-error :message="$errors->first('email')" />
+              <x-forms.input-label for="email" :value="__('Email address')" />
+              <x-forms.text-input class="dark:bg-neutral-900" id="email" name="email" :value="old('email')"
+                placeholder="Enter email address" :error="$errors->first('email')" autofocus autocomplete="email" />
+              <x-forms.input-error :message="$errors->first('email')" />
             </div>
             <!-- End Form Group -->
 
             <!-- Form Group -->
             <div class="space-y-2">
-              <x-admin.forms.input-label for="password" :value="__('Password')" />
-              <x-admin.forms.text-input type="password" class="dark:bg-neutral-900" id="password" name="password"
-                :value="old('password')" placeholder="Enter password" :error="$errors->first('password')" />
-              <x-admin.forms.input-error :message="$errors->first('password')" />
+              <x-forms.input-label for="password" :value="__('Password')" />
+              <x-forms.text-input type="password" class="dark:bg-neutral-900" id="password" name="password"
+                :value="old('password')" placeholder="Enter password" :error="$errors->first('password')" autocomplete="current-password" />
+              <x-forms.input-error :message="$errors->first('password')" />
             </div>
             <!-- End Form Group -->
 
             <!-- Checkbox -->
             <div class="flex items-center">
               <div class="flex">
-                <x-admin.forms.checkbox-input class="dark:bg-neutral-900" id="remember_me" name="remember" />
+                <x-forms.checkbox-input class="dark:bg-neutral-900" id="remember_me" name="remember" />
               </div>
               <div class="ms-3">
-                <x-admin.forms.input-label for="remember_me" :value="__('Remember me')" />
+                <x-forms.input-label for="remember_me" :value="__('Remember me')" />
               </div>
             </div>
             <!-- End Checkbox -->
 
-            <x-admin.button type="submit" class="justify-center">Login</x-admin.button>
+            <x-button type="submit" class="justify-center">Login</x-admin.button>
           </div>
         </form>
         <!-- End Form -->

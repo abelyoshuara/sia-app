@@ -16,31 +16,31 @@
           data.forEach((n, i) => {
             html += `
               <tr>
-                <x-admin.table.td>
+                <x-table.td>
                   <div class="px-6 py-3">
                     <span class="text-sm font-semibold text-gray-800 dark:text-neutral-200">${i+1}</span>
                   </div>
                 </x-admin.table.td>
 
-                <x-admin.table.td class="h-px w-72">
+                <x-table.td class="h-px w-72">
                   <div class="px-6 py-3">
                     <span class="text-sm text-gray-500 dark:text-neutral-500">${n.akun3.kode} | ${n.akun3.nama}</span>
                   </div>
                 </x-admin.table.td>
 
-                <x-admin.table.td class="h-px w-72">
+                <x-table.td class="h-px w-72">
                   <div class="px-6 py-3">
                     <span class="text-sm text-gray-500 dark:text-neutral-500">${n.debit}</span>
                   </div>
                 </x-admin.table.td>
 
-                <x-admin.table.td class="h-px w-72">
+                <x-table.td class="h-px w-72">
                   <div class="px-6 py-3">
                     <span class="text-sm text-gray-500 dark:text-neutral-500">${n.kredit}</span>
                   </div>
                 </x-admin.table.td>
 
-                <x-admin.table.td>
+                <x-table.td>
                   <div class="px-6 py-3">
                     <span class="text-sm text-gray-500 dark:text-neutral-500">${n.status.nama}</span>
                   </div>
@@ -49,7 +49,7 @@
           });
         } else {
           html += `<tr>
-                    <x-admin.table.td class="h-px w-72 text-center" colspan="6">
+                    <x-table.td class="h-px w-72 text-center" colspan="6">
                       <div class="px-6 py-3">
                         <span class="text-sm text-gray-500 dark:text-neutral-500">Data belum tersedia</span>
                       </div>
@@ -113,300 +113,308 @@
   <div class="flex flex-col" x-data>
     <div class="-m-1.5 overflow-x-auto">
       <div class="p-1.5 min-w-full inline-block align-middle">
-        <x-admin.card class="overflow-hidden">
-          <x-admin.card.header>
+        <x-card class="overflow-hidden">
+          <x-card.header>
             <x-slot:inputs>
-              <x-admin.card.search />
+              <x-card.search />
             </x-slot>
             <x-slot:actions>
-              <x-admin.button as="a" href="{{ route('transaksi-penyesuaian.create') }}" size="sm">
+              <x-button as="a" href="{{ route('transaksi-penyesuaian.create') }}" size="sm">
                 Tambah
-              </x-admin.button>
+                </x-admin.button>
             </x-slot>
-          </x-admin.card.header>
+            </x-admin.card.header>
 
-          <x-admin.table id="table-transaksi-penyesuaian">
-            <x-admin.table.thead>
-              <tr>
-                <x-admin.table.th class="ps-6 text-start whitespace-nowrap">
-                  <div class="flex items-center gap-x-2">
-                    <span class="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-neutral-200">
-                      No
-                    </span>
-                  </div>
-                </x-admin.table.th>
-
-                <x-admin.table.th class="px-6 text-start whitespace-nowrap">
-                  <div class="flex items-center gap-x-2">
-                    <span class="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-neutral-200">
-                      Tanggal
-                    </span>
-                  </div>
-                </x-admin.table.th>
-
-                <x-admin.table.th class="px-6 text-start whitespace-nowrap">
-                  <div class="flex items-center gap-x-2">
-                    <span class="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-neutral-200">
-                      Deskripsi
-                    </span>
-                  </div>
-                </x-admin.table.th>
-
-                <x-admin.table.th class="px-6 text-start whitespace-nowrap">
-                  <div class="flex items-center gap-x-2">
-                    <span class="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-neutral-200">
-                      Nilai
-                    </span>
-                  </div>
-                </x-admin.table.th>
-
-                <x-admin.table.th class="px-6 text-start whitespace-nowrap">
-                  <div class="flex items-center gap-x-2">
-                    <span class="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-neutral-200">
-                      Waktu
-                    </span>
-                  </div>
-                </x-admin.table.th>
-
-                <x-admin.table.th class="px-6 text-end"></x-admin.table.th>
-              </tr>
-            </x-admin.table.thead>
-
-            <x-admin.table.tbody>
-              @forelse ($transaksiPenyesuaian as $tp)
+            <x-table id="table-transaksi-penyesuaian">
+              <x-table.thead>
                 <tr>
-                  <x-admin.table.td>
-                    <div class="px-6 py-3">
-                      <span
-                        class="text-sm font-semibold text-gray-800 dark:text-neutral-200">{{ $loop->iteration + $transaksiPenyesuaian->firstItem() - 1 }}</span>
-                    </div>
-                  </x-admin.table.td>
-
-                  <x-admin.table.td class="h-px w-72">
-                    <div class="px-6 py-3">
-                      <span
-                        class="text-sm text-gray-500 dark:text-neutral-500">{{ date('d M Y', strtotime($tp->tanggal)) }}</span>
-                    </div>
-                  </x-admin.table.td>
-
-                  <x-admin.table.td class="h-px w-72">
-                    <div class="px-6 py-3">
-                      <span
-                        class="text-sm text-gray-500 dark:text-neutral-500">{{ Str::limit($tp->deskripsi, 130) }}</span>
-                    </div>
-                  </x-admin.table.td>
-
-                  <x-admin.table.td class="h-px w-72">
-                    <div class="px-6 py-3">
-                      <span
-                        class="text-sm text-gray-500 dark:text-neutral-500">{{ Number::currency($tp->nilai, 'IDR', 'id') }}</span>
-                    </div>
-                  </x-admin.table.td>
-
-                  <x-admin.table.td>
-                    <div class="px-6 py-3">
-                      <span class="text-sm text-gray-500 dark:text-neutral-500">{{ $tp->waktu }}</span>
-                    </div>
-                  </x-admin.table.td>
-
-                  <x-admin.table.td>
-                    <div class="inline-flex">
-                      <x-admin.button variant="link" size="sm" data-hs-overlay="#detail-modal"
-                        data-id="{{ $tp->id }}" class="button-detail">
-                        Detail
-                      </x-admin.button>
-                      <x-admin.button as="a" href="{{ route('transaksi-penyesuaian.edit', $tp->id) }}"
-                        variant="link" size="sm">
-                        Ubah
-                      </x-admin.button>
-                      <x-admin.button variant="link" size="sm" data-hs-overlay="#confirm-deletion"
-                        @click="$dispatch('set-id', { id: {{ $tp->id }} })">
-                        Hapus
-                      </x-admin.button>
-                    </div>
-                  </x-admin.table.td>
-                </tr>
-              @empty
-                <tr>
-                  <x-admin.table.td colspan="6">
-                    <div class="px-6 py-3 text-center">
-                      <span class="text-sm font-semibold text-red-500">Data belum tersedia!</span>
-                    </div>
-                  </x-admin.table.td>
-                </tr>
-              @endforelse
-            </x-admin.table.tbody>
-          </x-admin.table>
-
-          <x-admin.card.footer>{{ $transaksiPenyesuaian->links() }}</x-admin.card.footer>
-        </x-admin.card>
-      </div>
-    </div>
-  </div>
-
-  <x-admin.modal id="detail-modal" size="lg">
-    <x-admin.modal.header dismiss="#detail-modal">Detail Transaksi Penyesuaian</x-admin.modal.header>
-
-    <x-admin.modal.body class="flex flex-col gap-y-4">
-      <div class="-m-1.5 overflow-x-auto">
-        <div class="p-1.5 min-w-full inline-block align-middle">
-          <div class="border rounded-lg dark:border-neutral-700">
-            <x-admin.table id="tabel-detail-transaksi-penyesuaian">
-              <x-admin.table.tbody>
-
-                <tr>
-                  <x-admin.table.td>
-                    <div class="px-6 py-3">
-                      <span class="text-sm font-semibold text-gray-800 dark:text-neutral-200">Tanggal</span>
-                    </div>
-                  </x-admin.table.td>
-                  <x-admin.table.td class="h-px w-72">
-                    <div class="px-6 py-3">
-                      <span class="text-sm text-gray-500 dark:text-neutral-500" id="tanggal"></span>
-                    </div>
-                  </x-admin.table.td>
-                </tr>
-
-                <tr>
-                  <x-admin.table.td>
-                    <div class="px-6 py-3">
-                      <span class="text-sm font-semibold text-gray-800 dark:text-neutral-200">Deskripsi</span>
-                    </div>
-                  </x-admin.table.td>
-                  <x-admin.table.td class="h-px w-72">
-                    <div class="px-6 py-3">
-                      <span class="text-sm text-gray-500 dark:text-neutral-500" id="deskripsi"></span>
-                    </div>
-                  </x-admin.table.td>
-                </tr>
-
-                <tr>
-                  <x-admin.table.td>
-                    <div class="px-6 py-3">
-                      <span class="text-sm font-semibold text-gray-800 dark:text-neutral-200">Nilai</span>
-                    </div>
-                  </x-admin.table.td>
-                  <x-admin.table.td class="h-px w-72">
-                    <div class="px-6 py-3">
-                      <span class="text-sm text-gray-500 dark:text-neutral-500" id="nilai"></span>
-                    </div>
-                  </x-admin.table.td>
-                </tr>
-
-                <tr>
-                  <x-admin.table.td class="w-1/5">
-                    <div class="px-6 py-3">
-                      <span class="text-sm font-semibold text-gray-800 dark:text-neutral-200">Waktu</span>
-                    </div>
-                  </x-admin.table.td>
-                  <x-admin.table.td class="h-px w-72">
-                    <div class="px-6 py-3">
-                      <span class="text-sm text-gray-500 dark:text-neutral-500" id="waktu"></span>
-                    </div>
-                  </x-admin.table.td>
-                </tr>
-
-                <tr>
-                  <x-admin.table.td class="w-1/5">
-                    <div class="px-6 py-3">
-                      <span class="text-sm font-semibold text-gray-800 dark:text-neutral-200">Jumlah</span>
-                    </div>
-                  </x-admin.table.td>
-                  <x-admin.table.td class="h-px w-72">
-                    <div class="px-6 py-3">
-                      <span class="text-sm text-gray-500 dark:text-neutral-500" id="jumlah"></span>
-                    </div>
-                  </x-admin.table.td>
-                </tr>
-
-              </x-admin.table.tbody>
-            </x-admin.table>
-          </div>
-        </div>
-      </div>
-
-      <div class="-m-1.5 overflow-x-auto">
-        <div class="p-1.5 min-w-full inline-block align-middle">
-          <div class="border rounded-lg dark:border-neutral-700">
-            <x-admin.table id="tabel-detail-nilai-transaksi-penyesuaian">
-              <x-admin.table.thead>
-                <tr>
-                  <x-admin.table.th class="ps-6 text-start whitespace-nowrap">
+                  <x-table.th class="ps-6 text-start whitespace-nowrap">
                     <div class="flex items-center gap-x-2">
                       <span class="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-neutral-200">
                         No
                       </span>
                     </div>
-                  </x-admin.table.th>
+                    </x-admin.table.th>
 
-                  <x-admin.table.th class="px-6 text-start whitespace-nowrap">
-                    <div class="flex items-center gap-x-2">
-                      <span class="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-neutral-200">
-                        Kode Akun
-                      </span>
-                    </div>
-                  </x-admin.table.th>
+                    <x-table.th class="px-6 text-start whitespace-nowrap">
+                      <div class="flex items-center gap-x-2">
+                        <span class="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-neutral-200">
+                          Tanggal
+                        </span>
+                      </div>
+                      </x-admin.table.th>
 
-                  <x-admin.table.th class="px-6 text-start whitespace-nowrap">
-                    <div class="flex items-center gap-x-2">
-                      <span class="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-neutral-200">
-                        Debit
-                      </span>
-                    </div>
-                  </x-admin.table.th>
+                      <x-table.th class="px-6 text-start whitespace-nowrap">
+                        <div class="flex items-center gap-x-2">
+                          <span
+                            class="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-neutral-200">
+                            Deskripsi
+                          </span>
+                        </div>
+                        </x-admin.table.th>
 
-                  <x-admin.table.th class="px-6 text-start whitespace-nowrap">
-                    <div class="flex items-center gap-x-2">
-                      <span class="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-neutral-200">
-                        Kredit
-                      </span>
-                    </div>
-                  </x-admin.table.th>
+                        <x-table.th class="px-6 text-start whitespace-nowrap">
+                          <div class="flex items-center gap-x-2">
+                            <span
+                              class="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-neutral-200">
+                              Nilai
+                            </span>
+                          </div>
+                          </x-admin.table.th>
 
-                  <x-admin.table.th class="px-6 text-start whitespace-nowrap">
-                    <div class="flex items-center gap-x-2">
-                      <span class="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-neutral-200">
-                        Status
-                      </span>
-                    </div>
-                  </x-admin.table.th>
+                          <x-table.th class="px-6 text-start whitespace-nowrap">
+                            <div class="flex items-center gap-x-2">
+                              <span
+                                class="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-neutral-200">
+                                Waktu
+                              </span>
+                            </div>
+                            </x-admin.table.th>
 
-                  <x-admin.table.th class="px-6 text-end"></x-admin.table.th>
+                            <x-table.th class="px-6 text-end"></x-admin.table.th>
                 </tr>
-              </x-admin.table.thead>
+                </x-admin.table.thead>
 
-              <x-admin.table.tbody></x-admin.table.tbody>
-            </x-admin.table>
+                <x-table.tbody>
+                  @forelse ($transaksiPenyesuaian as $tp)
+                    <tr>
+                      <x-table.td>
+                        <div class="px-6 py-3">
+                          <span
+                            class="text-sm font-semibold text-gray-800 dark:text-neutral-200">{{ $loop->iteration + $transaksiPenyesuaian->firstItem() - 1 }}</span>
+                        </div>
+                        </x-admin.table.td>
+
+                        <x-table.td class="h-px w-72">
+                          <div class="px-6 py-3">
+                            <span
+                              class="text-sm text-gray-500 dark:text-neutral-500">{{ date('d M Y', strtotime($tp->tanggal)) }}</span>
+                          </div>
+                          </x-admin.table.td>
+
+                          <x-table.td class="h-px w-72">
+                            <div class="px-6 py-3">
+                              <span
+                                class="text-sm text-gray-500 dark:text-neutral-500">{{ Str::limit($tp->deskripsi, 130) }}</span>
+                            </div>
+                            </x-admin.table.td>
+
+                            <x-table.td class="h-px w-72">
+                              <div class="px-6 py-3">
+                                <span
+                                  class="text-sm text-gray-500 dark:text-neutral-500">{{ Number::currency($tp->nilai, 'IDR', 'id') }}</span>
+                              </div>
+                              </x-admin.table.td>
+
+                              <x-table.td>
+                                <div class="px-6 py-3">
+                                  <span class="text-sm text-gray-500 dark:text-neutral-500">{{ $tp->waktu }}</span>
+                                </div>
+                                </x-admin.table.td>
+
+                                <x-table.td>
+                                  <div class="inline-flex">
+                                    <x-button variant="link" size="sm" data-hs-overlay="#detail-modal"
+                                      data-id="{{ $tp->id }}" class="button-detail">
+                                      Detail
+                                      </x-admin.button>
+                                      <x-button as="a" href="{{ route('transaksi-penyesuaian.edit', $tp->id) }}"
+                                        variant="link" size="sm">
+                                        Ubah
+                                        </x-admin.button>
+                                        <x-button variant="link" size="sm" data-hs-overlay="#confirm-deletion"
+                                          @click="$dispatch('set-id', { id: {{ $tp->id }} })">
+                                          Hapus
+                                          </x-admin.button>
+                                  </div>
+                                  </x-admin.table.td>
+                    </tr>
+                  @empty
+                    <tr>
+                      <x-table.td colspan="6">
+                        <div class="px-6 py-3 text-center">
+                          <span class="text-sm font-semibold text-red-500">Data belum tersedia!</span>
+                        </div>
+                        </x-admin.table.td>
+                    </tr>
+                  @endforelse
+                  </x-admin.table.tbody>
+                  </x-admin.table>
+
+                  <x-card.footer>{{ $transaksiPenyesuaian->links() }}</x-admin.card.footer>
+                    </x-admin.card>
+      </div>
+    </div>
+  </div>
+
+  <x-modal id="detail-modal" size="lg">
+    <x-modal.header dismiss="#detail-modal">Detail Transaksi Penyesuaian</x-admin.modal.header>
+
+      <x-modal.body class="flex flex-col gap-y-4">
+        <div class="-m-1.5 overflow-x-auto">
+          <div class="p-1.5 min-w-full inline-block align-middle">
+            <div class="border rounded-lg dark:border-neutral-700">
+              <x-table id="tabel-detail-transaksi-penyesuaian">
+                <x-table.tbody>
+
+                  <tr>
+                    <x-table.td>
+                      <div class="px-6 py-3">
+                        <span class="text-sm font-semibold text-gray-800 dark:text-neutral-200">Tanggal</span>
+                      </div>
+                      </x-admin.table.td>
+                      <x-table.td class="h-px w-72">
+                        <div class="px-6 py-3">
+                          <span class="text-sm text-gray-500 dark:text-neutral-500" id="tanggal"></span>
+                        </div>
+                        </x-admin.table.td>
+                  </tr>
+
+                  <tr>
+                    <x-table.td>
+                      <div class="px-6 py-3">
+                        <span class="text-sm font-semibold text-gray-800 dark:text-neutral-200">Deskripsi</span>
+                      </div>
+                      </x-admin.table.td>
+                      <x-table.td class="h-px w-72">
+                        <div class="px-6 py-3">
+                          <span class="text-sm text-gray-500 dark:text-neutral-500" id="deskripsi"></span>
+                        </div>
+                        </x-admin.table.td>
+                  </tr>
+
+                  <tr>
+                    <x-table.td>
+                      <div class="px-6 py-3">
+                        <span class="text-sm font-semibold text-gray-800 dark:text-neutral-200">Nilai</span>
+                      </div>
+                      </x-admin.table.td>
+                      <x-table.td class="h-px w-72">
+                        <div class="px-6 py-3">
+                          <span class="text-sm text-gray-500 dark:text-neutral-500" id="nilai"></span>
+                        </div>
+                        </x-admin.table.td>
+                  </tr>
+
+                  <tr>
+                    <x-table.td class="w-1/5">
+                      <div class="px-6 py-3">
+                        <span class="text-sm font-semibold text-gray-800 dark:text-neutral-200">Waktu</span>
+                      </div>
+                      </x-admin.table.td>
+                      <x-table.td class="h-px w-72">
+                        <div class="px-6 py-3">
+                          <span class="text-sm text-gray-500 dark:text-neutral-500" id="waktu"></span>
+                        </div>
+                        </x-admin.table.td>
+                  </tr>
+
+                  <tr>
+                    <x-table.td class="w-1/5">
+                      <div class="px-6 py-3">
+                        <span class="text-sm font-semibold text-gray-800 dark:text-neutral-200">Jumlah</span>
+                      </div>
+                      </x-admin.table.td>
+                      <x-table.td class="h-px w-72">
+                        <div class="px-6 py-3">
+                          <span class="text-sm text-gray-500 dark:text-neutral-500" id="jumlah"></span>
+                        </div>
+                        </x-admin.table.td>
+                  </tr>
+
+                  </x-admin.table.tbody>
+                  </x-admin.table>
+            </div>
           </div>
         </div>
-      </div>
-    </x-admin.modal.body>
 
-    <x-admin.modal.footer>
-      <x-admin.button variant="white" color="dark" size="sm" data-hs-overlay="#detail-modal">
-        Tutup
-      </x-admin.button>
-    </x-admin.modal.footer>
-  </x-admin.modal>
+        <div class="-m-1.5 overflow-x-auto">
+          <div class="p-1.5 min-w-full inline-block align-middle">
+            <div class="border rounded-lg dark:border-neutral-700">
+              <x-table id="tabel-detail-nilai-transaksi-penyesuaian">
+                <x-table.thead>
+                  <tr>
+                    <x-table.th class="ps-6 text-start whitespace-nowrap">
+                      <div class="flex items-center gap-x-2">
+                        <span
+                          class="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-neutral-200">
+                          No
+                        </span>
+                      </div>
+                      </x-admin.table.th>
 
-  <x-admin.modal id="detail-modal" x-data="{ id: null }" @set-id.window="id = $event.detail.id">
-    <x-admin.modal.header dismiss="#confirm-deletion">Hapus Konfirmasi</x-admin.modal.header>
+                      <x-table.th class="px-6 text-start whitespace-nowrap">
+                        <div class="flex items-center gap-x-2">
+                          <span
+                            class="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-neutral-200">
+                            Kode Akun
+                          </span>
+                        </div>
+                        </x-admin.table.th>
 
-    <x-admin.modal.body>
-      <p class="text-gray-800 dark:text-neutral-400">Apakah anda yakin data ingin dihapus?</p>
-    </x-admin.modal.body>
+                        <x-table.th class="px-6 text-start whitespace-nowrap">
+                          <div class="flex items-center gap-x-2">
+                            <span
+                              class="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-neutral-200">
+                              Debit
+                            </span>
+                          </div>
+                          </x-admin.table.th>
 
-    <x-admin.modal.footer>
-      <x-admin.button variant="white" color="dark" size="sm" data-hs-overlay="#confirm-deletion">
-        Tutup
-      </x-admin.button>
-      <form :action="`{{ route('transaksi-penyesuaian.destroy', '') }}/${id}`" method="post">
-        @csrf
-        @method('DELETE')
-        <x-admin.button type="submit" variant="solid" color="red" size="sm">
-          Hapus
-        </x-admin.button>
-      </form>
-    </x-admin.modal.footer>
-  </x-admin.modal>
+                          <x-table.th class="px-6 text-start whitespace-nowrap">
+                            <div class="flex items-center gap-x-2">
+                              <span
+                                class="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-neutral-200">
+                                Kredit
+                              </span>
+                            </div>
+                            </x-admin.table.th>
+
+                            <x-table.th class="px-6 text-start whitespace-nowrap">
+                              <div class="flex items-center gap-x-2">
+                                <span
+                                  class="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-neutral-200">
+                                  Status
+                                </span>
+                              </div>
+                              </x-admin.table.th>
+
+                              <x-table.th class="px-6 text-end"></x-admin.table.th>
+                  </tr>
+                  </x-admin.table.thead>
+
+                  <x-table.tbody></x-admin.table.tbody>
+                    </x-admin.table>
+            </div>
+          </div>
+        </div>
+        </x-admin.modal.body>
+
+        <x-modal.footer>
+          <x-button variant="white" color="dark" size="sm" data-hs-overlay="#detail-modal">
+            Tutup
+            </x-admin.button>
+            </x-admin.modal.footer>
+            </x-admin.modal>
+
+            <x-modal id="detail-modal" x-data="{ id: null }" @set-id.window="id = $event.detail.id">
+              <x-modal.header dismiss="#confirm-deletion">Hapus Konfirmasi</x-admin.modal.header>
+
+                <x-modal.body>
+                  <p class="text-gray-800 dark:text-neutral-400">Apakah anda yakin data ingin dihapus?</p>
+                  </x-admin.modal.body>
+
+                  <x-modal.footer>
+                    <x-button variant="white" color="dark" size="sm" data-hs-overlay="#confirm-deletion">
+                      Tutup
+                      </x-admin.button>
+                      <form :action="`{{ route('transaksi-penyesuaian.destroy', '') }}/${id}`" method="post">
+                        @csrf
+                        @method('DELETE')
+                        <x-button type="submit" variant="solid" color="red" size="sm">
+                          Hapus
+                          </x-admin.button>
+                      </form>
+                      </x-admin.modal.footer>
+                      </x-admin.modal>
 </x-layouts.app>

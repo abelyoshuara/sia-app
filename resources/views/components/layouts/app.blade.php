@@ -23,16 +23,16 @@
 
 <body class="font-sans antialiased bg-gray-50 dark:bg-neutral-900 overflow-x-hidden">
   <!-- ========== HEADER ========== -->
-  <x-admin.header />
+  <x-header />
   <!-- ========== END HEADER ========== -->
 
   <!-- ========== MAIN CONTENT ========== -->
   <!-- Breadcrumb -->
-  <x-admin.breadcrumb />
+  <x-breadcrumb />
   <!-- End Breadcrumb -->
 
   <!-- Sidebar -->
-  <x-admin.sidebar />
+  <x-sidebar />
   <!-- End Sidebar -->
 
   <!-- Content -->
@@ -50,11 +50,11 @@
     x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 scale-90"
     x-init="setTimeout(() => show = false, 3000)">
     @if (session('success'))
-      <x-admin.toast class="min-w-80" :message="session('success')" status="success" />
+      <x-toast class="min-w-80" :message="session('success')" status="success" />
     @elseif (session('error'))
-      <x-admin.toast class="min-w-80" :message="session('error')" status="error" />
+      <x-toast class="min-w-80" :message="session('error')" status="error" />
     @elseif (session('info'))
-      <x-admin.toast class="min-w-80" :message="session('info')" />
+      <x-toast class="min-w-80" :message="session('info')" />
     @endif
   </div>
   <!-- End Toast -->
