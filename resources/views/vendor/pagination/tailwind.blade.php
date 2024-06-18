@@ -35,7 +35,7 @@
           {!! __('to') !!}
           <span class="font-semibold text-gray-800 dark:text-neutral-200">{{ $paginator->lastItem() }}</span>
         @else
-          {{ $paginator->count() }}
+          <span class="font-semibold text-gray-800 dark:text-neutral-200">{{ $paginator->count() }}</span>
         @endif
         {!! __('of') !!}
         <span class="font-semibold text-gray-800 dark:text-neutral-200">{{ $paginator->total() }}</span>
